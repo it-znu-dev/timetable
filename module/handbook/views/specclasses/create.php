@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\module\handbook\models\Specclasses */
 
-$this->title = 'Create Specclasses';
-$this->params['breadcrumbs'][] = ['label' => 'Specclasses', 'url' => ['index']];
+$this->title = 'Типи аудиторій';
+$this->params['breadcrumbs'][] = ['label' => 'Перелік', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="specclasses-create">

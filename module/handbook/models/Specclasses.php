@@ -39,8 +39,8 @@ class SpecClasses extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'spec_class_id' => 'Spec Class ID',
-            'spec_class_name' => 'Spec Class Name',
+            'spec_class_id' => 'ID',
+            'spec_class_name' => 'Тип аудиторії',
         ];
     }
 

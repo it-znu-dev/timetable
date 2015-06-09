@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\module\handbook\models\SpecclassesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Specclasses';
+$this->title = 'Типи аудиторій';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="specclasses-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Specclasses', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Додати', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'spec_class_id',
+            //'spec_class_id',
             'spec_class_name',
 
             ['class' => 'yii\grid\ActionColumn'],
