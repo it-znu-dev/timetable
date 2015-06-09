@@ -12,3 +12,30 @@
 [25-Mar-2015 06:35:24 UTC] PHP  10. yii\BaseYii::autoload() /home/sysadmin/www/raspisanie/vendor/yiisoft/yii2/base/InlineAction.php:0
 [25-Mar-2015 06:35:24 UTC] PHP  11. include() /home/sysadmin/www/raspisanie/vendor/yiisoft/yii2/BaseYii.php:288
 [25-Mar-2015 08:44:25 Europe/Helsinki] PHP Parse error:  syntax error, unexpected '~' in /home/sysadmin/www/raspisanie/web/index.php on line 2
+[09-Jun-2015 12:32:07 UTC] PHP Fatal error:  require(): Failed opening required '/home/sysadmin/www/timetable/views/layouts/main.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/View.php on line 325
+[09-Jun-2015 12:32:07 UTC] PHP Stack trace:
+[09-Jun-2015 12:32:07 UTC] PHP   1. {main}() /home/sysadmin/www/timetable/web/index.php:0
+[09-Jun-2015 12:32:07 UTC] PHP   2. yii\base\Application->run() /home/sysadmin/www/timetable/web/index.php:12
+[09-Jun-2015 12:32:07 UTC] PHP   3. yii\web\Application->handleRequest() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Application.php:375
+[09-Jun-2015 12:32:07 UTC] PHP   4. yii\base\Module->runAction() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/web/Application.php:83
+[09-Jun-2015 12:32:07 UTC] PHP   5. yii\base\Controller->runAction() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Module.php:455
+[09-Jun-2015 12:32:07 UTC] PHP   6. yii\base\InlineAction->runWithParams() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Controller.php:151
+[09-Jun-2015 12:32:07 UTC] PHP   7. call_user_func_array() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/InlineAction.php:55
+[09-Jun-2015 12:32:07 UTC] PHP   8. app\module\handbook\controllers\ClassRoomsController->actionIndex() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/InlineAction.php:55
+[09-Jun-2015 12:32:07 UTC] PHP   9. yii\base\Controller->render() /home/sysadmin/www/timetable/module/handbook/controllers/ClassroomsController.php:42
+[09-Jun-2015 12:32:07 UTC] PHP  10. yii\base\Controller->renderContent() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Controller.php:368
+[09-Jun-2015 12:32:07 UTC] PHP  11. yii\base\View->renderFile() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Controller.php:382
+[09-Jun-2015 12:32:07 UTC] PHP  12. yii\base\View->renderPhpFile() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/View.php:247
+[09-Jun-2015 12:33:27 UTC] PHP Fatal error:  Class 'app\module\handbook\models\Specclasses' not found in /home/sysadmin/www/timetable/module/handbook/models/SpecclassesSearch.php on line 14
+[09-Jun-2015 12:33:27 UTC] PHP Stack trace:
+[09-Jun-2015 12:33:27 UTC] PHP   1. {main}() /home/sysadmin/www/timetable/web/index.php:0
+[09-Jun-2015 12:33:27 UTC] PHP   2. yii\base\Application->run() /home/sysadmin/www/timetable/web/index.php:12
+[09-Jun-2015 12:33:27 UTC] PHP   3. yii\web\Application->handleRequest() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Application.php:375
+[09-Jun-2015 12:33:27 UTC] PHP   4. yii\base\Module->runAction() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/web/Application.php:83
+[09-Jun-2015 12:33:27 UTC] PHP   5. yii\base\Controller->runAction() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Module.php:455
+[09-Jun-2015 12:33:27 UTC] PHP   6. yii\base\InlineAction->runWithParams() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/Controller.php:151
+[09-Jun-2015 12:33:27 UTC] PHP   7. call_user_func_array() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/InlineAction.php:55
+[09-Jun-2015 12:33:27 UTC] PHP   8. app\module\handbook\controllers\SpecclassesController->actionIndex() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/InlineAction.php:55
+[09-Jun-2015 12:33:27 UTC] PHP   9. spl_autoload_call() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/InlineAction.php:35
+[09-Jun-2015 12:33:27 UTC] PHP  10. yii\BaseYii::autoload() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/base/InlineAction.php:0
+[09-Jun-2015 12:33:27 UTC] PHP  11. include() /home/sysadmin/www/timetable/vendor/yiisoft/yii2/BaseYii.php:288
