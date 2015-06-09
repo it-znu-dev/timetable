@@ -10,7 +10,7 @@ use Yii;
  * @property integer $classroom_id
  * @property integer $spec_class_id
  *
- * @property SpecClasses $specClass
+ * @property Specclasses $specClass
  * @property ClassRooms $classroom
  */
 class ClassType extends \yii\db\ActiveRecord
@@ -50,7 +50,7 @@ class ClassType extends \yii\db\ActiveRecord
      */
     public function getSpecClass()
     {
-        return $this->hasOne(SpecClasses::className(), ['spec_class_id' => 'spec_class_id']);
+        return $this->hasOne(Specclasses::className(), ['spec_class_id' => 'spec_class_id']);
     }
 
     /**
