@@ -119,7 +119,39 @@ class DisciplineController extends Controller
             ]);
         }
     }
+/**
+     * Updates an existing Discipline model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id
+     * @return mixed
+     */
+    public function actionCopy($id)
+    {
+        $model = $this->findModel($id);
 
+        if ($model->load(Yii::$app->request->post())) {
+            
+            $m = new Discipline;
+            $m->id_discipline = $model->id_discipline;
+            $m->id_edbo = $model->id_edbo;
+            $m->id_deanery = $model->id_deanery;
+            $m->id_cathedra = $model->id_cathedra;
+            $m->id_lessons_type = $model->id_lessons_type;
+            $m->id_group = $model->id_group;
+            $m->course = $model->course;
+            $m->hours = $model->hours;
+            $m->semestr_hours = $model->semestr_hours;
+            $m->id_classroom = $model->id_classroom;
+            $m->insert();  
+            
+            return $this->redirect(['view', 'id' => $m->discipline_distribution_id]);
+        } else {            
+            
+                return $this->render('copy', [
+                'model' => $model,
+            ]);
+        }
+    }
     /**
      * Deletes an existing Discipline model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

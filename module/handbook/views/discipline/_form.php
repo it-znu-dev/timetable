@@ -69,36 +69,24 @@ foreach($all_faculty as $af){
         echo Html::label("Групи");
         echo Select2::widget([
             'model' => $model,
-            'attribute' => 'mgroups',
+            'attribute' => 'id_group',
             'language' => 'ru',
-            'data' => ArrayHelper::map(Groups::find()->all(),'group_id','main_group_name'),
-            'options' => ['multiple' => true]
+            'data' => ArrayHelper::map(Groups::find()->all(),'group_id','main_group_name')
         ]);  
     ?>  
-    
-    <?=
-        $form->field($model, 'id_classroom')->widget(Select2::classname(), [
-            'data' => $classroomsArray,            
-            'language' => 'uk',
-            'pluginOptions' => [
-                'allowClear' => true
-            ],
-            'options' => ['placeholder' => ' '],
-        ])->label('Аудиторія');
-    ?> 
-    
+        
     <?= $form->field($model, 'course')->textInput() ?>
 
-    <?= $form->field($model, 'hours')->textInput() ?>
+    <?= $form->field($model, 'hours')->textInput(['value' => 0]) ?>
 
-    <?= $form->field($model, 'semestr_hours')->textInput() ?>
+    <?= $form->field($model, 'semestr_hours')->textInput(['value' => 0]) ?>
 
-    <?= $form->field($model, 'id_edbo')->textInput() ?>
+    <?= $form->field($model, 'id_edbo')->textInput(['value' => 0]) ?>
 
-    <?= $form->field($model, 'id_deanery')->textInput() ?>
+    <?= $form->field($model, 'id_deanery')->textInput(['value' => 0]) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Створити' : 'Оновити', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Створити' : 'Зберегти', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

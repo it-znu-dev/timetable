@@ -53,17 +53,14 @@ $optionsId = DisciplineGroups::findAll(['id_discipline'  => $model->discipline_d
             'id_deanery',
             'cathedra.cathedra_name',
             'lessonsType.lesson_type_name',
-            [
-                'label' => 'Групи',
-                'value' => $optionsString
-            ],
+            'group.main_group_name',
             'course',
             'hours',
             'semestr_hours',
-            [
+            /*[
               'label' => 'Аудиторія',
               'value' => auditory($model->id_classroom)
-            ],
+            ],*/
         ],
     ]) ?>
 

@@ -43,35 +43,36 @@ $this->params['breadcrumbs'][] = $this->title;
               'attribute' => 'id_lessons_type',
               'value' => 'lessonsType.lesson_type_name'
             ],
-            [
+            /*[
               'attribute' => 'id_group',
               //'header' => 'Групи',
               'format' => 'raw',
               'filter' => '<input type="text" class="form-control" '
                 .' name="DisciplineSearch[groups_name]" '
                 .' value="'.$searchModel->groups_name.'" />',
-              'value' => function($data){
-                /* @var $data app\module\handbook\models\ClassRoomsSearch */
-                $discgr = $data->getDisciplineGroups()->all();
-                $result = "<ul>";
-                foreach ($discgr as $dg){
-                    /* @var $classType app\module\handbook\models\ClassType */
-                  $groups = $dg->getGroup()->all();
-                  foreach ($groups as $group){
-                    /* @var $specClass app\module\handbook\models\SpecClasses */
-                    $result .= "<li>".$group->main_group_name.'</li>';
-                  }
-                }
-                $result .= "</ul>";
-                return $result;
-              }
+              'value' => ArrayHelper::map(Groups::find()->all(), 'group_id', 'main_group_name')
+            ],*/
+            [
+              'attribute' => 'id_group',
+              'value' => 'group.main_group_name'
             ],
             'course',
             'hours',
             'semestr_hours',
             //'id_classroom',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+               'header' => 'Операції',
+               'format' => 'raw',
+               'value' => function($data){
+                    $btn = "";
+                    $btn .= '<a href="/web/index.php?r=handbook/discipline/view&id='.$data->discipline_distribution_id.'" title="Перегляд" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;';               
+                    $btn .= '<a href="/web/index.php?r=handbook/discipline/copy&id='.$data->discipline_distribution_id.'" title="Копіювати" data-pjax="0"><span class="glyphicon glyphicon-copy"></span></a>&nbsp;';
+                    $btn .= '<a href="/web/index.php?r=handbook/discipline/update&id='.$data->discipline_distribution_id.'" title="Оновити" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;';
+                    $btn .= '<a href="/web/index.php?r=handbook/discipline/delete&id='.$data->discipline_distribution_id.'" title="Видалити" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>';
+                    return $btn;
+               }
+            ]
+            //['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
