@@ -1,6 +1,9 @@
 <?php
 
 namespace app\module\timetable\models;
+use app\module\handbook\models\Faculty;
+use app\module\handbook\models\Groups;
+use app\module\handbook\models\Speciality;
 
 use Yii;
 

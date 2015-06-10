@@ -74,7 +74,7 @@ class LessonsController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
-            if($model->all_group == 1){
+            /*if($model->all_group == 1){
                 $groups_arr = Groups::findAll(['parent_group' => $model->parent]);
                 
                 foreach($groups_arr as $ga){
@@ -82,8 +82,7 @@ class LessonsController extends Controller
                     if($ga['group_id'] == $model->id_group){
                         continue;
                     }else{
-                        var_dump($ga);
-                        exit();
+                        
                         $m = new Lessons;
                         $m->is_holiday = $model->is_holiday;
                         $m->all_group = $model->all_group;
@@ -104,7 +103,7 @@ class LessonsController extends Controller
                         
                     }
                 } 
-            }
+            }*/
             if($model->num_dem == 1){//Записываем если выбрана галочка Числитель/Знаменатель для 1 группы
                 if($model->is_numerator == 1){                    
                     $m->is_holiday = $model->is_holiday;

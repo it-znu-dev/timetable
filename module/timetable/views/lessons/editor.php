@@ -290,7 +290,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             <a href="#editor_page_top">
                 <div class="editor_navigation_top">
                     <i class="fa fa-angle-double-up"></i>
-                    Вверх
+                    Вгору
                 </div>
             </a>            
             <a href="#editor_page_bottom">

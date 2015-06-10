@@ -38,12 +38,12 @@ $classes = ClassRooms::find()->Where('seats>'.$sig)->orderBy('classrooms_number 
     }
 
 
-    $d = DisciplineGroups::findAll(['id_group' => $id_group]);    
+    $d = Discipline::findAll(['id_group' => $id_group]);    
     
     if(empty($d)){
-        $d = DisciplineGroups::findAll(['id_group' => $students_in_group[0]['parent_group']]);
+        $d = Discipline::findAll(['id_group' => $students_in_group[0]['parent_group']]);
     }
-    
+     
 foreach ($d as $dd){
     //$disciplines = Discipline::findAll(['discipline_distribution_id' => $dd['id_discipline']]);
     $disciplines = Discipline::findAll(['discipline_distribution_id' => $dd['id_discipline']]);
