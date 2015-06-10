@@ -160,7 +160,7 @@ class DisciplineController extends Controller
      */
     public function actionDelete($id)
     {
-        DisciplineGroups::deleteAll('id_discipline = '.$id);
+        Discipline::deleteAll('id_discipline = '.$id);
         
         $this->findModel($id)->delete();
 
