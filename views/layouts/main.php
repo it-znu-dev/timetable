@@ -40,8 +40,8 @@ AppAsset::register($this);
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
                     ['label' => 'Головна', 'url' => ['/site/index']],
-                    //['label' => 'Редактор розкладу', 'url' => ['/timetable/lessons/creator_index']],
-                    ['label' => 'Редактор розкладу', 'url' => ['/timetable/lessons/index']],
+                    ['label' => 'Редактор розкладу', 'url' => ['/timetable/lessons/creator_index']],
+                    //['label' => 'Редактор розкладу', 'url' => ['/timetable/lessons/index']],
                     [
                         'label' => 'Довідники', 
                         'items' => [
