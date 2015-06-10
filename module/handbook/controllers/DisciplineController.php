@@ -160,8 +160,7 @@ class DisciplineController extends Controller
      */
     public function actionDelete($id)
     {
-        Discipline::deleteAll('discipline_distribution_id = '.$id);
-        
+                
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
