@@ -112,7 +112,6 @@ class ClassRoomsController extends Controller
                 $optArr[] = $key['spec_class_id'];
             }
                 $model->options = $optArr;
-                var_dump($model);
             return $this->render('update', [
                 'model' => $model,
             ]);
