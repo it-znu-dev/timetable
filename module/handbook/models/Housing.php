@@ -39,7 +39,7 @@ class Housing extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'housing_id' => 'Housing ID',
+            'housing_id' => 'ID корпусу',
             'name' => 'Корпус',
         ];
     }

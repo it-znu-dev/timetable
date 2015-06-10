@@ -91,6 +91,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             echo '<div id="lesson_id'.$lesson_id.'"></div>';
              echo '<div id="day_lesson'; echo $day.'_'.$lesson_number; echo '"></div>';
             ?>
+            <p class="editor_info">Чисельник</p>
             <?=Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/create&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
             <?php
             echo '<p class="none_information_in_editor">Інформація відсутня</p>';
@@ -100,6 +101,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             echo '<div id="lesson_id'.$lesson_id.'"></div>';
             echo '<div id="day_lesson'; echo $day.'_'.$lesson_number; echo '"></div>';
             ?>
+            <p class="editor_info">Знаменник</p>
             <?=Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/create&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=0&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
             <?php   
              echo '<p class="none_information_in_editor">Інформація відсутня</p>';
@@ -197,7 +199,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
 ?>
     
 <!--Начало таблицы редактора-->   
-<table class="table-striped table-bordered">
+<table class="table-striped table-bordered editor_table">
     <tr>
         <td class="day_name_title">
                 День
@@ -235,7 +237,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             ';
     
     foreach ($less_time as $lt){ //Перебираем поле таблицы с номером пары
-        echo '
+        /*echo '
             <tr>
                 <td class="lesson_time">'
                     .$lt['lesson_time_name']
@@ -243,6 +245,12 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                     .$lt['begin_time']
                     .'<br/> - <br/>'
                     .$lt['end_time'].'
+                </td>';
+         */
+        echo '
+            <tr>
+                <td class="lesson_time">'
+                    .$lt['lesson_time_name'].'                    
                 </td>';
     foreach($groups_list as $gr){ //Перебираем все подгруппы                    
         if($group_has_subgroup){ //Проверяем есть ли подгруппы
