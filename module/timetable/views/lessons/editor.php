@@ -135,6 +135,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 echo '<div id="lesson_id'.$lesson_id.'"></div>';
                 echo '<div id="day_lesson'; echo $day.'_'.$lesson_number; echo '"></div>';
                 ?>
+                <p class="editor_info">Чисельник</p>
                 <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
                 <a href="<?= Url::toRoute(['delete', 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php 
@@ -143,6 +144,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 echo '<div id="lesson_id'.$lesson_id.'"></div>';
                 echo '<div id="day_lesson'; echo $day.'_'.$lesson_number; echo '"></div>';
                 ?>
+                <p class="editor_info">Знаменник</p>
                 <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=0&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
                 <a href="<?= Url::toRoute(['delete', 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php  
@@ -197,7 +199,8 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
     
     Modal::end();
 ?>
-    
+ 
+<div id="editor_page_top"></div>
 <!--Начало таблицы редактора-->   
 <table class="table-striped table-bordered editor_table">
     <tr>
@@ -280,5 +283,144 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
 }       
 ?>
 </table>
+<div id="editor_page_bottom"></div>
 <!--Конец таблицы редактора-->    
+    <div class="editor_navigation">
+        <div>
+            <a href="#editor_page_top">
+                <div class="editor_navigation_top">
+                    <i class="fa fa-angle-double-up"></i>
+                    Вверх
+                </div>
+            </a>            
+            <a href="#editor_page_bottom">
+                <div class="editor_navigation_bottom">
+                    <i class="fa fa-angle-double-down"></i>
+                    Вниз
+                </div>  
+            </a> 
+            <a href="#" id="editor_navigation_close_button">
+                <div class="editor_navigation_bottom editor_navigation_close">
+                    <i class="fa fa-times"></i><br/>
+                    Сховати
+                </div>  
+            </a>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="editor_navigation_day">
+            <a href="#day_lesson1_1">
+                <div class="editor_navigation_monday">
+                    Понеділок
+                </div>
+            </a>   
+            <p>пара:</p> 
+            <div>
+                <a href="#day_lesson1_1">1</a>
+                <a href="#day_lesson1_2">2</a>
+                <a href="#day_lesson1_3">3</a>
+                <a href="#day_lesson1_4">4</a>
+                <a href="#day_lesson1_5">5</a>
+                <a href="#day_lesson1_6">6</a>
+                <a href="#day_lesson1_7">7</a>
+                <a href="#day_lesson1_8">8</a>
+            </div>
+        </div>
+        
+        <div class="editor_navigation_day editor_navigation_day_mrgn">
+            <a href="#day_lesson2_1">
+                <div class="editor_navigation_monday">
+                    Вівторок
+                </div>
+            </a>   
+            <p>пара:</p> 
+            <div>
+                <a href="#day_lesson2_1">1</a>
+                <a href="#day_lesson2_2">2</a>
+                <a href="#day_lesson2_3">3</a>
+                <a href="#day_lesson2_4">4</a>
+                <a href="#day_lesson2_5">5</a>
+                <a href="#day_lesson2_6">6</a>
+                <a href="#day_lesson2_7">7</a>
+                <a href="#day_lesson2_8">8</a>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="editor_navigation_day">
+            <a href="#day_lesson3_1">
+                <div class="editor_navigation_monday">
+                    Середа
+                </div>
+            </a>   
+            <p>пара:</p> 
+            <div>
+                <a href="#day_lesson3_1">1</a>
+                <a href="#day_lesson3_2">2</a>
+                <a href="#day_lesson3_3">3</a>
+                <a href="#day_lesson3_4">4</a>
+                <a href="#day_lesson3_5">5</a>
+                <a href="#day_lesson3_6">6</a>
+                <a href="#day_lesson3_7">7</a>
+                <a href="#day_lesson3_8">8</a>
+            </div>
+        </div>
+        
+        <div class="editor_navigation_day editor_navigation_day_mrgn">
+            <a href="#day_lesson4_1">
+                <div class="editor_navigation_monday">
+                    Четвер
+                </div>
+            </a>   
+            <p>пара:</p> 
+            <div>
+                <a href="#day_lesson4_1">1</a>
+                <a href="#day_lesson4_2">2</a>
+                <a href="#day_lesson4_3">3</a>
+                <a href="#day_lesson4_4">4</a>
+                <a href="#day_lesson4_5">5</a>
+                <a href="#day_lesson4_6">6</a>
+                <a href="#day_lesson4_7">7</a>
+                <a href="#day_lesson4_8">8</a>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="editor_navigation_day">
+            <a href="#day_lesson5_1">
+                <div class="editor_navigation_monday">
+                    П'ятниця
+                </div>
+            </a>   
+            <p>пара:</p> 
+            <div>
+                <a href="#day_lesson5_1">1</a>
+                <a href="#day_lesson5_2">2</a>
+                <a href="#day_lesson5_3">3</a>
+                <a href="#day_lesson5_4">4</a>
+                <a href="#day_lesson5_5">5</a>
+                <a href="#day_lesson5_6">6</a>
+                <a href="#day_lesson5_7">7</a>
+                <a href="#day_lesson5_8">8</a>
+            </div>
+        </div>
+        <div class="editor_navigation_day editor_navigation_day_mrgn">
+            <a href="#day_lesson6_1">
+                <div class="editor_navigation_monday">
+                    Субота
+                </div>
+            </a>   
+            <p>пара:</p> 
+            <div>
+                <a href="#day_lesson6_1">1</a>
+                <a href="#day_lesson6_2">2</a>
+                <a href="#day_lesson6_3">3</a>
+                <a href="#day_lesson6_4">4</a>
+                <a href="#day_lesson6_5">5</a>
+                <a href="#day_lesson6_6">6</a>
+                <a href="#day_lesson6_7">7</a>
+                <a href="#day_lesson6_8">8</a>
+            </div>
+        </div>
+    </div>
+
 </div>
+                
+                
