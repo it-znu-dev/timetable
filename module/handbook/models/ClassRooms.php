@@ -79,6 +79,6 @@ class ClassRooms extends \yii\db\ActiveRecord
      */
     public function getSpecClass()
     {
-        return $this->hasOne(SpecClasses::className(), ['spec_class_id' => 'spec_class_name']);
+        return $this->hasOne(Specclasses::className(), ['spec_class_id' => 'spec_class_name']);
     }
 }
