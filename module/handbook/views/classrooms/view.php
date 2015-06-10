@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\module\handbook\models\ClassType;
-use app\module\handbook\models\SpecClasses;
+use app\module\handbook\models\Specclasses;
 
 /* @var $this yii\web\View */
 /* @var $model app\module\handbook\models\ClassRooms */
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $optionsId = ClassType::findAll(['classroom_id'  => $model->classrooms_id]); 
         
         for($i = 0; $i < count($optionsId); $i++){
-            $optionName[] = SpecClasses::findAll(['spec_class_id' => $optionsId[$i]['spec_class_id']]); 
+            $optionName[] = Specclasses::findAll(['spec_class_id' => $optionsId[$i]['spec_class_id']]); 
             $optionsArray[] = $optionName[$i][0]['spec_class_name']." ";
         }
         
