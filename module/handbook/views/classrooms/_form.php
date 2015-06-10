@@ -6,7 +6,7 @@ use yii\helpers\ArrayHelper;
 use kartik\switchinput\SwitchInput;
 use kartik\select2\Select2;
 use app\module\handbook\models\Housing;
-use app\module\handbook\models\SpecClasses;
+use app\module\handbook\models\Specclasses;
 
 /* @var $this yii\web\View */
 /* @var $model app\module\handbook\models\ClassRooms */
@@ -33,7 +33,7 @@ use app\module\handbook\models\SpecClasses;
             'model' => $model,
             'attribute' => 'options',
             'language' => 'ru',
-            'data' => ArrayHelper::map(SpecClasses::find()->all(),'spec_class_id','spec_class_name'),
+            'data' => ArrayHelper::map(Specclasses::find()->all(),'spec_class_id','spec_class_name'),
             'options' => ['multiple' => true]
         ]);        
     ?>
