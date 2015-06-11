@@ -76,6 +76,8 @@ foreach($all_faculty as $af){
     ?>  
         
     <?= $form->field($model, 'course')->textInput() ?>
+    
+    <?= $form->field($model, 'semestr')->textInput() ?>
 
     <?php
         if(isset($_GET['id'])){

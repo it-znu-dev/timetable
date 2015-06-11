@@ -19,8 +19,8 @@ class DisciplineSearch extends Discipline
     public function rules()
     {
         return [
-            [['discipline_distribution_id', 'id_edbo', 'id_deanery',  'course', 'hours', 'semestr_hours', 'id_classroom'], 'integer'],
-            [['id_cathedra', 'id_discipline', 'id_lessons_type', 'id_group', 'groups_name'], 'safe']
+            [['discipline_distribution_id', 'id_edbo', 'id_deanery',  'course', 'hours', 'semestr_hours', 'id_classroom', 'semestr'], 'integer'],
+            [['id_cathedra', 'id_discipline', 'id_lessons_type', 'id_group', 'groups_name', 'semestr'], 'safe']
         ];
     }
 
@@ -84,6 +84,10 @@ class DisciplineSearch extends Discipline
                 'asc' => ['groups.main_group_name' => SORT_ASC],
                 'desc' => ['groups.main_group_name' => SORT_DESC]
             ],
+            'semestr' => [
+                'asc' => ['semestr' => SORT_ASC],
+                'desc' => ['semestr' => SORT_DESC]
+            ],
         ]
         ]);
         $this->load($params);
@@ -108,6 +112,7 @@ class DisciplineSearch extends Discipline
             'hours' => $this->hours,
             'semestr_hours' => $this->semestr_hours,
             'id_classroom' => $this->id_classroom,
+            'semestr' => $this->semestr,
         ]);
 
         $query->andFilterWhere(['like', 'discipline_name', $this->id_discipline])

@@ -57,6 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
               'value' => 'group.main_group_name'
             ],
             'course',
+            'semestr',
             'hours',
             'semestr_hours',
             //'id_classroom',
