@@ -55,7 +55,7 @@ foreach ($d as $dd){
 }
 
 asort($da);
-var_dump($d);
+ 
 foreach($da as $x=>$x_value){
     $discipline_array[$x] = $x_value;
 }
