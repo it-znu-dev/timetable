@@ -32,10 +32,18 @@ foreach($all_lessons as $al){
 
 $result = array_unique($uniq_group);
 
-foreach($all_groups as $al){
-    $arr[][]
+foreach($result as $r){
+    $res[] = Groups::findOne(["group_id" => $r]);
+     
 }
-var_dump($result);
+foreach($res as $rr){
+    $arr[] = array(
+        "id" => $rr['group_id'],
+        "name" => $rr['main_group_name']
+    );
+}
+
+
 ?>
 <div class="lessons-index">
 

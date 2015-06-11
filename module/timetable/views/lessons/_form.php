@@ -31,6 +31,7 @@ $id_okr = $_GET['id_okr'];
 
 $students_in_group = Groups::find()->where(['group_id' => $id_group ])->all();
 $sig = $students_in_group[0]['number_of_students']+5;
+
 $classes = ClassRooms::find()->Where('seats>'.$sig)->orderBy('classrooms_number ASC')->all();
     foreach ($classes as $cl){ 
         $housing = Housing::findOne(['housing_id' => $cl['id_housing']]);
@@ -76,7 +77,7 @@ foreach($da as $x=>$x_value){
         <?= $form->field($model, 'num_dem')->checkbox() ?>
     </div>
         <div class="col-md-3 editor_checkbox">
-            <?= $form->field($model, 'all_group')->hiddenInput(['value' => 0])->label(false) ?>
+            <?= $form->field($model, 'all_group')->checkbox() ?>
             
         </div>
         <!--<div class="col-md-3 editor_checkbox">
