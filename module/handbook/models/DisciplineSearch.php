@@ -19,8 +19,8 @@ class DisciplineSearch extends Discipline
     public function rules()
     {
         return [
-            [['discipline_distribution_id', 'id_edbo', 'id_deanery',  'id_group', 'course', 'hours', 'semestr_hours', 'id_classroom'], 'integer'],
-            [['id_cathedra', 'id_discipline', 'id_lessons_type', 'groups_name'], 'safe']
+            [['discipline_distribution_id', 'id_edbo', 'id_deanery',  'course', 'hours', 'semestr_hours', 'id_classroom'], 'integer'],
+            [['id_cathedra', 'id_discipline', 'id_lessons_type', 'id_group', 'groups_name'], 'safe']
         ];
     }
 
@@ -42,10 +42,10 @@ class DisciplineSearch extends Discipline
      */
     public function search($params)
     {
-        //$query = Discipline::find();
+        $query = Discipline::find();
         
-        $query = Discipline::find()
-          ->joinWith(['disciplineGroups', 'disciplineGroups.group']);
+        /*$query = Discipline::find()
+          ->joinWith(['disciplineGroups', 'disciplineGroups.group']);*/
         
         $query->joinWith('cathedra');
         $query->joinWith('disciplineName');
@@ -96,6 +96,7 @@ class DisciplineSearch extends Discipline
 
         //$query->joinWith('disciplineList');
         $query->joinWith('cathedra');
+        $query->joinWith('group');
         
         $query->andFilterWhere([
             'discipline_distribution_id' => $this->discipline_distribution_id,
@@ -111,7 +112,7 @@ class DisciplineSearch extends Discipline
 
         $query->andFilterWhere(['like', 'discipline_name', $this->id_discipline])
                 ->andFilterWhere(['like', 'cathedra.cathedra_name', $this->id_cathedra])
-                ->andFilterWhere(['like', 'main_group_name', $this->groups_name])
+                ->andFilterWhere(['like', 'main_group_name', $this->id_group])
                 ->andFilterWhere(['like', 'lesson_type_name', $this->id_lessons_type]);
         
 

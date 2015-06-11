@@ -16,18 +16,26 @@ $this->params['breadcrumbs'][] = $this->title;
 $all_faculty = Faculty::find()->all();
 $all_groups = Groups::find()->all();
 $all_lessons = Lessons::find()->all();
- 
-foreach ($all_faculty as $af){
-    foreach($all_lessons as $al){
+/*foreach ($all_faculty as $af){
+    foreach($all_lessons as $al){        
         if($al['id_faculty'] == $af['faculty_id']){            
             if($al['id_group'] != $tmp){
                 $uniq_group[$al['id_faculty']] = $al['id_group'];
                 $tmp = $al['id_group'];
-            }  
+            } 
     }
 }
+}*/
+foreach($all_lessons as $al){ 
+    $uniq_group[] = $al['id_group'];
 }
-var_dump($uniq_group);
+
+$result = array_unique($uniq_group);
+
+foreach($all_groups as $al){
+    $arr[][]
+}
+var_dump($result);
 ?>
 <div class="lessons-index">
 

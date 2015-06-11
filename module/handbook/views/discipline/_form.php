@@ -77,9 +77,25 @@ foreach($all_faculty as $af){
         
     <?= $form->field($model, 'course')->textInput() ?>
 
-    <?= $form->field($model, 'hours')->textInput(['value' => 0]) ?>
+    <?php
+        if(isset($_GET['id'])){
+    ?>    
+    
+        <?= $form->field($model, 'hours')->textInput() ?>
 
-    <?= $form->field($model, 'semestr_hours')->textInput(['value' => 0]) ?>
+        <?= $form->field($model, 'semestr_hours')->textInput() ?>
+    
+    <?php
+    }else{
+    ?>
+    
+        <?= $form->field($model, 'hours')->textInput(['value' => 0]) ?>
+
+        <?= $form->field($model, 'semestr_hours')->textInput(['value' => 0]) ?>
+    
+    <?php
+    }
+    ?>
 
     <?= $form->field($model, 'id_edbo')->textInput(['value' => 0]) ?>
 
