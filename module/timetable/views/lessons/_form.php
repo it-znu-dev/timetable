@@ -39,7 +39,7 @@ $classes = ClassRooms::find()->Where('seats>'.$sig)->orderBy('classrooms_number 
 
 
     $d = Discipline::findAll(['id_group' => $id_group]);    
-    var_dump($d);
+     
     if(empty($d)){
         $d = Discipline::findAll(['id_group' => $students_in_group[0]['parent_group']]);
     }
