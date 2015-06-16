@@ -57,7 +57,13 @@ $this->params['breadcrumbs'][] = $this->title;
               'value' => 'group.main_group_name'
             ],
             'course',
-            'semestr',
+            [
+              'attribute' => 'semestr',
+              'value' => 'semestr',
+              'filter' => '<input type="text" class="form-control" '
+                .' name="DisciplineSearch[semestr]" '
+                .' value="'.$searchModel->semestr.'" />',
+            ],
             'hours',
             'semestr_hours',
             //'id_classroom',
@@ -69,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $btn .= '<a href="index.php?r=handbook/discipline/view&id='.$data->discipline_distribution_id.'" title="Перегляд" data-pjax="0"><span class="glyphicon glyphicon-eye-open"></span></a>&nbsp;';               
                     $btn .= '<a href="index.php?r=handbook/discipline/copy&id='.$data->discipline_distribution_id.'" title="Копіювати" data-pjax="0"><span class="glyphicon glyphicon-copy"></span></a>&nbsp;';
                     $btn .= '<a href="index.php?r=handbook/discipline/update&id='.$data->discipline_distribution_id.'" title="Оновити" data-pjax="0"><span class="glyphicon glyphicon-pencil"></span></a>&nbsp;';
-                    $btn .= '<a href="/timetable/web/index.php?r=handbook/discipline/delete&id='.$data->discipline_distribution_id.'" title="Видалити" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>';
+                    $btn .= '<a href="index.php?r=handbook/discipline/delete&id='.$data->discipline_distribution_id.'" title="Видалити" data-confirm="Are you sure you want to delete this item?" data-method="post" data-pjax="0"><span class="glyphicon glyphicon-trash"></span></a>';
                     return $btn;
                }
             ]

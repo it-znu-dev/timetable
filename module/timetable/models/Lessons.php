@@ -38,12 +38,14 @@ use Yii;
 class Lessons extends \yii\db\ActiveRecord
 {
     
-    public $semestr;
+    
     public $course_get;
     public $num_dem;
     public $subgroup;
     public $parent;
     public $no_check;
+    
+    public $semestr;
     /**
      * @inheritdoc
      */
@@ -60,7 +62,7 @@ class Lessons extends \yii\db\ActiveRecord
         return [
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'required'],
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'integer'],
-            [['semestr','course_get','num_dem','subgroup', 'parent', 'no_check', 'comment'],'safe']
+            [['course_get','num_dem','subgroup', 'parent', 'no_check', 'comment'],'safe']
         ];
     }
 

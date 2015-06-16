@@ -1,5 +1,5 @@
 <?php
-$db_name = "test_timetable_znu";
+$db_name = "timetable_znu";
 $username = "root";
 $password = "";
 $fp = fopen(__DIR__ . "/db.txt","r");

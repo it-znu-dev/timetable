@@ -1,7 +1,6 @@
 <?php
 
 namespace app\module\handbook\models;
-use app\module\handbook\models\Cathedra;
 
 use Yii;
 
@@ -22,8 +21,8 @@ use Yii;
  *
  * @property Discipline $idDiscipline
  * @property Discipline[] $disciplines
+ * @property Groups $idGroup
  * @property LessonsType $idLessonsType
- * @property DisciplineGroups[] $disciplineGroups
  * @property Lessons[] $lessons
  */
 class Discipline extends \yii\db\ActiveRecord
@@ -43,9 +42,8 @@ class Discipline extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['id_edbo', 'id_deanery', 'id_cathedra', 'id_group', 'id_lessons_type', 'course'], 'required'],
-            [['id_edbo', 'id_deanery', 'id_group', 'course', 'hours', 'semestr_hours', 'id_classroom', 'semestr'], 'integer'],
-            [['id_discipline','mgroups', 'id_cathedra',  'id_lessons_type', 'id_classroom', 'hours', 'semestr_hours', 'semestr'],'safe']
+            [['id_discipline', 'id_edbo', 'id_deanery', 'id_cathedra', 'id_lessons_type', 'course', 'hours', 'semestr_hours'], 'required'],
+            [['id_discipline', 'mgroups', 'id_edbo', 'id_deanery', 'id_cathedra', 'id_lessons_type', 'id_group', 'course', 'hours', 'semestr_hours', 'id_classroom', 'semestr'], 'integer']
         ];
     }
 
@@ -55,17 +53,17 @@ class Discipline extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'discipline_distribution_id' => 'ID дисципліни',
+            'discipline_distribution_id' => 'Discipline Distribution ID',
             'id_discipline' => 'Дисципліна',
-            'id_edbo' => 'ID ЄДЕБО',
-            'id_deanery' => 'ID деканат',
+            'id_edbo' => 'Id Edbo',
+            'id_deanery' => 'Id Deanery',
             'id_cathedra' => 'Кафедра',
             'id_lessons_type' => 'Тип заняття',
-            'id_group' => 'Групи',
+            'id_group' => 'Група',
             'course' => 'Курс',
             'hours' => 'Годин за 2 тижні',
-            'semestr_hours' => 'Годин у семестр',
-            'id_classroom' => 'Id Classroom',
+            'semestr_hours' => 'Годин всього',
+            'id_classroom' => 'Аудиторія',
             'semestr' => 'Семестр'
         ];
     }
@@ -77,19 +75,21 @@ class Discipline extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Discipline::className(), ['discipline_id' => 'id_discipline']);
     }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCathedra()
-    {
-        return $this->hasOne(Cathedra::className(), ['cathedra_id' => 'id_cathedra']);
-    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getDisciplines()
     {
         return $this->hasMany(Discipline::className(), ['id_discipline' => 'discipline_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGroup()
+    {
+        return $this->hasOne(Groups::className(), ['group_id' => 'id_group']);
     }
 
     /**
@@ -103,30 +103,22 @@ class Discipline extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDisciplineGroups()
-    {
-        return $this->hasMany(DisciplineGroups::className(), ['id_discipline' => 'discipline_distribution_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
     public function getLessons()
     {
         return $this->hasMany(Lessons::className(), ['id_discipline' => 'discipline_distribution_id']);
     }
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getGroup()
-    {
-        return $this->hasOne(Groups::className(), ['group_id' => 'id_group']);
-    }
-    /**
+        /**
      * @return \yii\db\ActiveQuery
      */
     public function getDisciplineName()
     {
         return $this->hasOne(DisciplineList::className(), ['discipline_id' => 'id_discipline']);
+    }
+        /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCathedra()
+    {
+        return $this->hasOne(Cathedra::className(), ['cathedra_id' => 'id_cathedra']);
     }
 }
