@@ -36,8 +36,10 @@ $gl = Groups::findAll(["parent_group" => $group_id]);
 if(count($gl) > 0){//Определяем есть ли у группы подгруппы
     $group_has_subgroup = true;
     $groups_list = $gl;
+    $parent = $gl[0]['parent_group'];
 }else{
     $group_has_subgroup = false;
+    $parent = 0;
 }
 
 $this->title = 'Редагувати розклад:';
@@ -70,7 +72,7 @@ function getClassromNumber($id_classroom){
     $classroom_array = ClassRooms::findOne(['classrooms_id' => $id_classroom]);
     return 'Аудиторія № '.$classroom_array['classrooms_number'];
 }
-function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
+function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr,$parent){
     unset($one_lesson);
                         
     $one_lesson = Lessons::findOne([
@@ -94,7 +96,8 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             <p class="editor_info">Чисельник</p>
             <?=Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/create&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
             <?php
-            echo '<p class="none_information_in_editor">Інформація відсутня</p>';
+            //echo '<p class="none_information_in_editor">Інформація відсутня</p>';
+            echo '<p class="none_information_in_editor"></p>';
             echo '</div>';
         }else{
             echo '<div class="info_in_editor">';
@@ -104,7 +107,8 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             <p class="editor_info">Знаменник</p>
             <?=Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/create&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=0&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
             <?php   
-             echo '<p class="none_information_in_editor">Інформація відсутня</p>';
+            //echo '<p class="none_information_in_editor">Інформація відсутня</p>';
+            echo '<p class="none_information_in_editor"></p>';
             echo '</div>';
         }
     }else{//По заданным параметрам найдены данные 
@@ -115,7 +119,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 echo '<div id="day_lesson'; echo $day.'_'.$lesson_number; echo '"></div>';
                 ?>
                 <?=Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
-                <a href="<?= Url::toRoute(['delete', 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
+                <a href="<?= Url::toRoute(['delete', 'parent' => $parent, 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php
                 echo '<p class="dsr_in_editor">ДСР</p>';
                 echo '</div>';
@@ -125,7 +129,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 echo '<div id="day_lesson'; echo $day.'_'.$lesson_number; echo '"></div>';
                 ?>
                 <?=    Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
-                <a href="<?= Url::toRoute(['delete', 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
+                <a href="<?= Url::toRoute(['delete', 'parent' => $parent, 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php                   
                 echo '</div>';
             }
@@ -137,7 +141,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 ?>
                 <p class="editor_info">Чисельник</p>
                 <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
-                <a href="<?= Url::toRoute(['delete', 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
+                <a href="<?= Url::toRoute(['delete', 'parent' => $parent, 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php 
             }else{
                 echo '<div class="info_in_editor">';
@@ -146,7 +150,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 ?>
                 <p class="editor_info">Знаменник</p>
                 <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semestr'].'&is_numerator=0&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
-                <a href="<?= Url::toRoute(['delete', 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
+                <a href="<?= Url::toRoute(['delete', 'parent' => $parent, 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php  
             }
             ?>
@@ -198,6 +202,8 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
     echo "<div id='modalContent'></div>";
     
     Modal::end();
+    
+    //var_dump($gl);
 ?>
  
 <div id="editor_page_top"></div>
@@ -263,8 +269,8 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
                 echo '
                     <td class="lesson_div">';
                     $id_group = $gr['group_id'];
-                    day_print($day_counter, $lt['lesson_time_id'], $id_group,1,$gr['id_okr']);
-                    day_print($day_counter, $lt['lesson_time_id'], $id_group,0,$gr['id_okr']);
+                    day_print($day_counter, $lt['lesson_time_id'], $id_group,1,$gr['id_okr'],$parent);
+                    day_print($day_counter, $lt['lesson_time_id'], $id_group,0,$gr['id_okr'],$parent);
                 echo 
                     '</td>';
                     }
@@ -272,8 +278,8 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr){
             echo '
                 <td>';
                 $id_group = $gr['group_id'];
-                day_print($day_counter, $lt['lesson_time_id'], $id_group,1,$gr['id_okr']);
-                day_print($day_counter, $lt['lesson_time_id'], $id_group,0,$gr['id_okr']);
+                day_print($day_counter, $lt['lesson_time_id'], $id_group,1,$gr['id_okr'],$parent);
+                day_print($day_counter, $lt['lesson_time_id'], $id_group,0,$gr['id_okr'],$parent);
             echo
             '</td>';                        
             }        

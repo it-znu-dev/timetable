@@ -126,6 +126,8 @@ foreach($da as $x=>$x_value){
         ])->label('Аудиторія і корпус');
     ?> 
     
+    <?= $form->field($model, 'comment')->textarea() ?>
+    
     <?= $form->field($model, 'id_group')->hiddenInput(['value' => $id_group])->label(false) ?>
     
     <?= $form->field($model, 'subgroup')->hiddenInput(['value' => $students_in_group[0]['is_subgroup']])->label(false) ?>

@@ -19,6 +19,7 @@ class LessonsSearch extends Lessons
     {
         return [
             [['lesson_id', 'id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'all_speciality', 'lesson_number'], 'integer'],
+            [['comment'], 'safe']
         ];
     }
 
@@ -71,6 +72,7 @@ class LessonsSearch extends Lessons
             'all_group' => $this->all_group,
             'all_speciality' => $this->all_speciality,
             'lesson_number' => $this->lesson_number,
+            'comment' => $this->comment,
         ]);
 
         return $dataProvider;
