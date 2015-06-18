@@ -18,7 +18,7 @@ class DisciplineSearch extends Discipline
     public function rules()
     {
         return [
-            [['discipline_distribution_id', 'id_discipline', 'id_edbo', 'id_deanery', 'id_cathedra', 'id_lessons_type', 'id_group', 'course', 'hours', 'semestr_hours', 'id_classroom', 'semestr'], 'integer'],
+            [['discipline_distribution_id', 'id_discipline', 'id_edbo', 'id_deanery', 'id_cathedra', 'id_lessons_type', 'id_group', 'course', 'hours', 'semestr_hours', 'id_classroom', 'discipline_semester'], 'integer'],
         ];
     }
 
@@ -66,7 +66,7 @@ class DisciplineSearch extends Discipline
             'hours' => $this->hours,
             'semestr_hours' => $this->semestr_hours,
             'id_classroom' => $this->id_classroom,
-            'semestr' => $this->semestr,
+            'discipline_semester' => $this->discipline_semester,
         ]);
 
         return $dataProvider;

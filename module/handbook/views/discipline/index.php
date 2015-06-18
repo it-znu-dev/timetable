@@ -58,11 +58,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'course',
             [
-              'attribute' => 'semestr',
-              'value' => 'semestr',
+              'attribute' => 'discipline_semester',
+              'value' => 'discipline_semester',
               'filter' => '<input type="text" class="form-control" '
-                .' name="DisciplineSearch[semestr]" '
-                .' value="'.$searchModel->semestr.'" />',
+                .' name="DisciplineSearch[discipline_semester]" '
+                .' value="'.$searchModel->discipline_semester.'" />',
             ],
             'hours',
             'semestr_hours',

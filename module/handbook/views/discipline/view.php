@@ -55,7 +55,7 @@ $optionsId = DisciplineGroups::findAll(['id_discipline'  => $model->discipline_d
             'lessonsType.lesson_type_name',
             'group.main_group_name',
             'course',
-            'semestr',
+            'discipline_semester',
             'hours',
             'semestr_hours',
             /*[
