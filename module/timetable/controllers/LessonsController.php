@@ -84,7 +84,8 @@ class LessonsController extends Controller
                                     $m->course = $model->course;
                                     $m->semester = $model->semester;
                                     $m->id_okr = $model->id_okr;
-                                    $m->is_numerator = 0;
+                                    $m->is_numerator = 0;                                    
+                                    $m->comment = $model->comment;
                                     $m->day = $model->day;
                                     $m->lesson_number = $model->lesson_number;
                                     $m->insert();
@@ -101,6 +102,7 @@ class LessonsController extends Controller
                                     $m->semester = $model->semester;
                                     $m->id_okr = $model->id_okr;
                                     $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
                                     $m->day = $model->day;
                                     $m->lesson_number = $model->lesson_number;
                                     $m->insert();                            
@@ -127,6 +129,7 @@ class LessonsController extends Controller
                                     $m->semester = $model->semester;
                                     $m->id_okr = $model->id_okr;
                                     $m->is_numerator = 0;
+                                    $m->comment = $model->comment;
                                     $m->day = $model->day;
                                     $m->lesson_number = $model->lesson_number;
                                     $m->insert();
@@ -143,6 +146,7 @@ class LessonsController extends Controller
                                     $m->semester = $model->semester;
                                     $m->id_okr = $model->id_okr;
                                     $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
                                     $m->day = $model->day;
                                     $m->lesson_number = $model->lesson_number;
                                     $m->insert(); 
@@ -160,6 +164,7 @@ class LessonsController extends Controller
                                 $m->course = $model->course;
                                 $m->semester = $model->semester;
                                 $m->id_okr = $model->id_okr;
+                                $m->comment = $model->comment;
                                 $m->is_numerator = $model->is_numerator;
                                 $m->day = $model->day;
                                 $m->lesson_number = $model->lesson_number;
@@ -183,6 +188,7 @@ class LessonsController extends Controller
                     $m->id_okr = $model->id_okr;
                     $m->is_numerator = 0;
                     $m->day = $model->day;
+                    $m->comment = $model->comment;
                     $m->lesson_number = $model->lesson_number;
                     $m->lesson_id = ++$model->lesson_id;
                     $m->insert();
@@ -200,6 +206,7 @@ class LessonsController extends Controller
                     $m->id_okr = $model->id_okr;
                     $m->is_numerator = 1;
                     $m->day = $model->day;
+                    $m->comment = $model->comment;
                     $m->lesson_number = $model->lesson_number;
                     $m->lesson_id = ++$model->lesson_id;
                     $m->insert();                            
@@ -243,10 +250,9 @@ class LessonsController extends Controller
            } */
             
             if($model->subgroup == 1){
-                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semestr='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->parent.'#lesson_id'.$model->lesson_id);    
+                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->parent.'#lesson_id'.$model->lesson_id);    
             }else{
-                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semestr='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#lesson_id'.$model->lesson_id);    
-            
+                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#lesson_id'.$model->lesson_id);    
             }
             return $this->redirect($url);
         } else {
@@ -262,7 +268,7 @@ class LessonsController extends Controller
         if ($model->load(Yii::$app->request->post())) {//$faculty->load(Yii::$app->request->post()) && $speciality->load(Yii::$app->request->post()) && 
            //var_dump($model);
             //exit();
-            return $this->redirect(['editor', 'semestr' => $model->semestr, 'course_get' => $model->course_get, 'faculty_id' => $model->id_faculty, 'speciality_id' => $model->id_speciality, 'group_id' => $model->id_group]);
+            return $this->redirect(['editor', 'semester_for_editor' => $model->semester_for_editor, 'course_get' => $model->course_get, 'faculty_id' => $model->id_faculty, 'speciality_id' => $model->id_speciality, 'group_id' => $model->id_group]);
         } else {
             return $this->render('creator_index', [
                 'model' => $model
@@ -277,7 +283,7 @@ class LessonsController extends Controller
         $model->load(Yii::$app->request->get());
         return $this->render('editor', [
                 'model' => $model,
-                'semestr' => $model['semestr']
+                'semester_for_editor' => $model['semester_for_editor']
             ]);
     }    
     
@@ -418,7 +424,11 @@ class LessonsController extends Controller
                 }
             } */
             
-            $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semestr='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#lesson_id'.$model->lesson_id);    
+            if($model->subgroup == 1){
+                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->parent.'#lesson_id'.$model->lesson_id);    
+            }else{
+                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#lesson_id'.$model->lesson_id);    
+            }
             return $this->redirect($url);
                 
                 
@@ -440,7 +450,15 @@ class LessonsController extends Controller
         
         $this->findModel($id)->delete();
         
-        $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semestr='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#day_lesson'.$model->day.'_'.$model->lesson_number);    
+        $group = Groups::find()->where(['group_id' => $model->id_group])->all();
+                
+        
+        
+        if($group[0]['parent_group'] != 0){
+            $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$group[0]['parent_group'].'#day_lesson'.$model->day.'_'.$model->lesson_number);    
+        }else{
+            $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#day_lesson'.$model->day.'_'.$model->lesson_number);    
+        }
         return $this->redirect($url);
     }
     /**

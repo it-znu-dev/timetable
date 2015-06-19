@@ -29,6 +29,7 @@ $is_numerator = $_GET['is_numerator'];
 $id_group = $_GET['id_group'];
 $id_okr = $_GET['id_okr'];
 
+
 $students_in_group = Groups::find()->where(['group_id' => $id_group ])->all();
 $sig = $students_in_group[0]['number_of_students']+5;
 

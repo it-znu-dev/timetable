@@ -45,7 +45,7 @@ class Lessons extends \yii\db\ActiveRecord
     public $parent;
     public $no_check;
     
-    public $semestr;
+    public $semester_for_editor;
     /**
      * @inheritdoc
      */
@@ -62,7 +62,7 @@ class Lessons extends \yii\db\ActiveRecord
         return [
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'required'],
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'integer'],
-            [['course_get','num_dem','subgroup', 'parent', 'no_check', 'comment'],'safe']
+            [['semester_for_editor','course_get','num_dem','subgroup', 'parent', 'no_check', 'comment'],'safe']
         ];
     }
 

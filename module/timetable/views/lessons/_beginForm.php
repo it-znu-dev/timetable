@@ -18,7 +18,7 @@ $course = ['Оберіть курс',1,2,3,4];
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'semestr')->dropDownList($semestr)->label("Семестр"); ?>
+    <?= $form->field($model, 'semester_for_editor')->dropDownList($semestr)->label("Семестр"); ?>
     
     <?= $form->field($model, 'course_get')->dropDownList($course)->label("Курс"); ?>
     
