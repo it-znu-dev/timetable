@@ -326,6 +326,7 @@ class LessonsController extends Controller
                 ->all();
  
         if($countPosts>0){
+                echo "<option>Оберіть спеціальність</option>";
             foreach($posts as $post){
                 echo "<option value='".$post->speciality_id."'>".$post->speciality_name."</option>";
             }
@@ -349,6 +350,7 @@ class LessonsController extends Controller
                 ->all();
  
         if($countPosts>0){
+            echo "<option>Оберіть групу</option>";
             foreach($posts as $post){
                 echo "<option value='".$post->group_id."'>".$post->main_group_name."</option>";
             }
