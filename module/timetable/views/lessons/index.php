@@ -42,13 +42,6 @@ foreach($res as $rr){
 }
 
 
-
-
-sort($arr);
-reset($arr);
-while (list($key, $val) = each($arr)) {
-    $lists[$key][] = $val;
-}
 var_dump($lists);
 ?>
 <div class="lessons-index">
