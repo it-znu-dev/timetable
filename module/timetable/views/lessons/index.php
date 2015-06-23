@@ -57,6 +57,26 @@ foreach($res as $rr){
 
 
 var_dump($lists);*/
+
+echo "<hr/>";
+
+$all_faculty = Faculty::find()->orderBy('faculty_name ASC')->all();
+foreach($all_faculty as $af){
+    $count = 0;
+    $all_gr = Lessons::find()->where(['id_faculty' => $af['faculty_id']])->select('id_group')->distinct()->all();
+    foreach($all_gr as $ag){
+        $gr = Groups::find()->where(['group_id' => $ag['id_group']])->all();
+        if($gr[0]['parent_group'] == 0){
+            $count++;
+        }else{
+            continue;
+            $count++;
+        }
+    }
+    //echo $count;
+    //$a = Groups::find()->where(['id_speciality' => $af['id_speciality'], 'parent_group' => 0])->count();
+    echo $af['faculty_name']." = ".$count."<br/>";
+}
 ?>
 <div class="lessons-index">
 
