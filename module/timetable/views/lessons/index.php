@@ -14,10 +14,24 @@ use app\module\handbook\models\Speciality;
 $this->title = 'Розклад занять';
 $this->params['breadcrumbs'][] = $this->title;
 
-$all_faculty = Faculty::find()->all();
-$all_groups = Groups::find()->all();
-$all_lessons = Lessons::find()->select('id_group')->distinct()->all();
+//$all_faculty = Faculty::find()->all();
+//$all_groups = Groups::find()->all();
+//$all_lessons = Lessons::find()->select('id_group')->distinct()->all();
 
+$all_lessons = Lessons::find()->where(['id_faculty' => 3])->select('id_group')->distinct()->all();
+
+foreach($all_lessons as $al){
+    //echo $al['id_group']."<br/>";
+    $group_tmp = Groups::findOne(["group_id" => $al['id_group']]);
+    if($group_tmp['parent_group'] == 0){
+        echo $group_tmp['main_group_name']."<br/>";
+    }else{
+        $group_name = Groups::findOne(["group_id" => $group_tmp['parent_group']]);
+        echo $group_name['main_group_name']."<br/>";
+    }
+} 
+//var_dump($all_lessons);
+/*
 foreach($all_lessons as $all){
     
     $group_tmp = Groups::findOne(["group_id" => $all['id_group']]);
@@ -28,8 +42,8 @@ foreach($all_lessons as $all){
         $res[] = Groups::findOne(["group_id" => $group_tmp['parent_group']]);
     }
      
-}
-
+}*/
+/*
 foreach($res as $rr){
     $faculty_id = Speciality::findOne(["speciality_id" => $rr['id_speciality']]);
     $faculty_name = Faculty::findOne(["faculty_id" => $faculty_id['id_faculty']]);
@@ -42,7 +56,7 @@ foreach($res as $rr){
 }
 
 
-var_dump($lists);
+var_dump($lists);*/
 ?>
 <div class="lessons-index">
 

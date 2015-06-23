@@ -78,8 +78,13 @@ foreach($da as $x=>$x_value){
         <?= $form->field($model, 'num_dem')->checkbox() ?>
     </div>
         <div class="col-md-3 editor_checkbox">
-            <?= $form->field($model, 'all_group')->checkbox() ?>
-            
+            <?php
+                if($students_in_group[0]['parent_group'] == 0){
+                    echo $form->field($model, 'all_group')->checkbox(['checked' => false, 'disabled'=>true]);
+                }else{
+                    echo $form->field($model, 'all_group')->checkbox();
+                }
+            ?>
         </div>
         <!--<div class="col-md-3 editor_checkbox">
            

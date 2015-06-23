@@ -67,6 +67,225 @@ class LessonsController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
+            $group_info = Groups::findOne(["group_id" => $model->id_group]);
+            
+            function lesson_insert($id_group, $is_numerator){
+                    $m = new Lessons;
+                    $m->is_holiday = $model->is_holiday;
+                    $m->all_group = $model->all_group;
+                    $m->id_discipline = $model->id_discipline;
+                    $m->id_teacher = $model->id_teacher;
+                    $m->id_classroom = $model->id_classroom;
+                    $m->id_group = $id_group;
+                    $m->id_faculty = $model->id_faculty;
+                    $m->id_speciality = $model->id_speciality;
+                    $m->course = $model->course;
+                    $m->semester = $model->semester;
+                    $m->id_okr = $model->id_okr;
+                    $m->is_numerator = $is_numerator;
+                    $m->day = $model->day;
+                    $m->comment = $model->comment;
+                    $m->lesson_number = $model->lesson_number;
+                    $m->insert();
+            }
+            
+            if($group_info['parent_group'] == 0){//Выясняем группа это или подгруппа
+                $is_group = true; //Если это группа
+                
+                if($model->num_dem == 1){//Записываем если выбрана галочка Числитель/Знаменатель для 1 группы
+                    
+                    $m = new Lessons;
+                    
+                    if($model->is_numerator == 1){                    
+                        $m->is_holiday = $model->is_holiday;
+                        $m->all_group = $model->all_group;
+                        $m->id_discipline = $model->id_discipline;
+                        $m->id_teacher = $model->id_teacher;
+                        $m->id_classroom = $model->id_classroom;
+                        $m->id_group = $model->id_group;
+                        $m->id_faculty = $model->id_faculty;
+                        $m->id_speciality = $model->id_speciality;
+                        $m->course = $model->course;
+                        $m->semester = $model->semester;
+                        $m->id_okr = $model->id_okr;
+                        $m->is_numerator = 0;
+                        $m->day = $model->day;
+                        $m->comment = $model->comment;
+                        $m->lesson_number = $model->lesson_number;
+                        $m->insert();
+                    }else{
+                        $m->is_holiday = $model->is_holiday;
+                        $m->all_group = $model->all_group;
+                        $m->id_discipline = $model->id_discipline;
+                        $m->id_teacher = $model->id_teacher;
+                        $m->id_classroom = $model->id_classroom;
+                        $m->id_group = $model->id_group;
+                        $m->id_faculty = $model->id_faculty;
+                        $m->id_speciality = $model->id_speciality;
+                        $m->course = $model->course;
+                        $m->semester = $model->semester;
+                        $m->id_okr = $model->id_okr;
+                        $m->is_numerator = 1;
+                        $m->day = $model->day;
+                        $m->comment = $model->comment;
+                        $m->lesson_number = $model->lesson_number;
+                        $m->insert();                       
+                    }
+                } 
+                
+            }else{
+                $is_group = false; //Если это подгруппа
+                
+                if($model->all_group == 1){//Если выбрана галка для всей группы
+                $groups_arr = Groups::findAll(['parent_group' => $model->parent]);
+                ///
+                if($model->num_dem == 1){//Если выбрана галка числитель/знаменатель, сохраним это для этой подгруппы
+                             $m = new Lessons;
+                                if($model->is_numerator == 1){                    
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $model->id_group;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 0;                                    
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();
+                                }else{
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $model->id_group;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();                            
+                                }             
+                            }
+                foreach($groups_arr as $ga){//Перебираем все группы
+                    
+                    if($ga['group_id'] == $model->id_group){//Если ИД подгруппы совпадает - психуем и забиваем
+                        continue;
+                    }else{//Иначе все по новой
+                        
+                        if($model->num_dem == 1){//Выбрана галочка Числитель/Знаменатель для всей группы
+                               ////
+                            $m = new Lessons;                                                    
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $ga['group_id'];
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 0;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();
+                            $m = new Lessons;
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $ga['group_id'];
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert(); 
+                            }else{
+                                $m = new Lessons;
+                                //echo $ga['group_id']."<br/>";
+                                $m->is_holiday = $model->is_holiday;
+                                $m->all_group = $model->all_group;
+                                $m->id_discipline = $model->id_discipline;
+                                $m->id_teacher = $model->id_teacher;
+                                $m->id_classroom = $model->id_classroom;
+                                $m->id_group = $ga['group_id'];
+                                $m->id_faculty = $model->id_faculty;
+                                $m->id_speciality = $model->id_speciality;
+                                $m->course = $model->course;
+                                $m->semester = $model->semester;
+                                $m->id_okr = $model->id_okr;
+                                $m->comment = $model->comment;
+                                $m->is_numerator = $model->is_numerator;
+                                $m->day = $model->day;
+                                $m->lesson_number = $model->lesson_number;
+                                $m->insert();
+                            }
+                    }
+                } 
+            }else{
+                if($model->num_dem == 1){//Если выбрана галка числитель/знаменатель, сохраним это для этой подгруппы
+                             $m = new Lessons;
+                                if($model->is_numerator == 1){                    
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $model->id_group;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 0;                                    
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();
+                                }else{
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $model->id_group;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();                            
+                                }             
+                            }
+            }
+                
+            }
+            
+            
+            /*
             if($model->all_group == 1){//Если выбрана галка для вссей группы
                 $groups_arr = Groups::findAll(['parent_group' => $model->parent]);
                 ///
@@ -172,7 +391,8 @@ class LessonsController extends Controller
                             }
                     }
                 } 
-            }elseif($model->num_dem == 1){//Записываем если выбрана галочка Числитель/Знаменатель для 1 группы
+            }
+            if($model->num_dem == 1){//Записываем если выбрана галочка Числитель/Знаменатель для 1 группы
                 $m = new Lessons;
                 if($model->is_numerator == 1){                    
                     $m->is_holiday = $model->is_holiday;
@@ -190,7 +410,6 @@ class LessonsController extends Controller
                     $m->day = $model->day;
                     $m->comment = $model->comment;
                     $m->lesson_number = $model->lesson_number;
-                    $m->lesson_id = ++$model->lesson_id;
                     $m->insert();
                 }else{
                     $m->is_holiday = $model->is_holiday;
@@ -208,46 +427,11 @@ class LessonsController extends Controller
                     $m->day = $model->day;
                     $m->comment = $model->comment;
                     $m->lesson_number = $model->lesson_number;
-                    $m->lesson_id = ++$model->lesson_id;
                     $m->insert();                            
                 }
-            }              
+            }            */  
             
-            /*if($model->all_group == 1){
-                $groups_arr = Groups::findAll(['main_group_name' => $model->id_group]);
-                var_dump($groups_arr);
-            }*/
             
-           /*if($model->all_speciality == 1){ 
-               $groups_arr = Groups::findAll(['id_speciality' => $model->id_speciality]);
-               foreach ($groups_arr as $gr){
-                   if($model->id_group == $gr['group_id']){
-                       echo 1;
-                       continue;
-                   }else{
-                   if($model->num_dem == 1){
-                       if($model->is_numerator == 1){
-                            $model->is_numerator = 0;
-                            $model->id_group = $gr['group_id'];
-                            $model->id_okr = $gr['id_okr'];
-                            $model->insert();
-                       }else{
-                            $model->is_numerator = 1;
-                            $model->id_group = $gr['group_id'];
-                            $model->id_okr = $gr['id_okr'];
-                            $model->insert();
-                       }
-                   }else{
-                        $model->id_group = $gr['group_id'];
-                        $model->id_okr = $gr['id_okr'];
-                        $model->insert();
-                   }    
-                   }
-                   var_dump($model);
-               }
-           }else{
-               
-           } */
             
             if($model->subgroup == 1){
                 $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->parent.'#lesson_id'.$model->lesson_id);    
