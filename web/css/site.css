@@ -222,5 +222,8 @@ a.desc:after {
     width: 114px;
 }
 .editor_navigation_day p{
-    margin: 5px;
+    margin: 2px;
+}
+.small_margins{
+    margin: 2px;
 }
