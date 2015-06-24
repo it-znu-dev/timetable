@@ -522,14 +522,17 @@ class LessonsController extends Controller
     }
     
     public function actionGroups_list($id,$course)
-    {       
+    {   
+        
+        //$form->field($model, 'id_group')->dropDownList(ArrayHelper::map(Groups::findAll(['is_subgroup' => 0]), 'group_id','main_group_name')
+        
         $infl = date('Y') - $course;
         $countPosts = Groups::find()
-                ->where(['id_speciality' =>  $id])
+                ->where(['id_speciality' =>  $id, 'is_subgroup' => 0])
                 ->count();
  
         $posts = Groups::find()
-                ->where(['id_speciality' => $id, 'inflow_year' => $infl])
+                ->where(['id_speciality' => $id, 'inflow_year' => $infl, 'is_subgroup' => 0])
                 ->orderBy('id_speciality DESC')
                 ->all();
  
