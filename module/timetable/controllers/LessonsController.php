@@ -88,6 +88,14 @@ class LessonsController extends Controller
                     $m->lesson_number = $model->lesson_number;
                     $m->insert();
             }
+//Код для всего потока            
+    if($model->all_speciality){
+       
+        
+    }        
+            
+            
+//Конец кода для всего потока
             
             if($group_info['parent_group'] == 0){//Выясняем группа это или подгруппа
                 $is_group = true; //Если это группа

@@ -41,11 +41,11 @@ $classes = ClassRooms::find()->Where('seats>'.$sig)->orderBy('classrooms_number 
 
 
     $d = Discipline::findAll(['id_group' => $id_group]);    
-     
+   
     if(empty($d)){
         $d = Discipline::findAll(['id_group' => $students_in_group[0]['parent_group']]);
     }
-     
+    
 foreach ($d as $dd){
     //$disciplines = Discipline::findAll(['discipline_distribution_id' => $dd['id_discipline']]);
     $disciplines = Discipline::findAll(['id_discipline' => $dd['id_discipline']]);
@@ -57,7 +57,7 @@ foreach ($d as $dd){
 }
 
 asort($da);
- 
+
 foreach($da as $x=>$x_value){
     $discipline_array[$x] = $x_value;
 }
@@ -86,10 +86,10 @@ foreach($da as $x=>$x_value){
                 }
             ?>
         </div>
-        <!--<div class="col-md-3 editor_checkbox">
+        <div class="col-md-3 editor_checkbox">
            
-            <?php// $form->field($model, 'all_speciality')->hiddenInput() ?>
-        </div>-->
+            <?= $form->field($model, 'all_speciality')->checkbox() ?>
+        </div>
     </div>
     <?=
         $form->field($model, 'id_discipline')->widget(Select2::classname(), [
