@@ -8,6 +8,11 @@ $(document).ready(function(){
                .find('#modalContent')
                .load($(this).attr('value'));
    });
+    $('.editor_copy_button').click(function(){
+       $('#modalCopy').modal('show')
+               .find('#modalContentCopy')
+               .load($(this).attr('value'));
+   });
    $("#editor_navigation_close_button").click(function(){
        if(is_navigation_button_click == false){
           $(".editor_navigation").css('bottom','-250px'); 

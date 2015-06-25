@@ -127,7 +127,7 @@ a.desc:after {
           color: #000;
           position: absolute;
           top: -1px;
-          right: 20px;
+          right: 37px;
           background: transparent;
           border: 0px;
         }
@@ -226,4 +226,17 @@ a.desc:after {
 }
 .small_margins{
     margin: 2px;
+}
+.editor_copy_button{
+          float: right;
+          color: #000;
+          position: absolute;
+          top: 3px;
+          right: 15px;
+          background: transparent;
+          border: 0px;
+        }
+.margin_for_editor_copy{
+    margin-right: -10px;
+    margin-left: -12px;        
 }

@@ -46,6 +46,15 @@ class Lessons extends \yii\db\ActiveRecord
     public $no_check;
     
     public $semester_for_editor;
+    
+    public $d1l1;
+    public $d1l2;
+    public $d1l3;
+    public $d1l4;
+    public $d1l5;
+    public $d1l6;
+    public $d1l7;
+    public $d1l8;
     /**
      * @inheritdoc
      */
@@ -62,7 +71,7 @@ class Lessons extends \yii\db\ActiveRecord
         return [
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'required'],
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'integer'],
-            [['semester_for_editor','course_get','num_dem','subgroup', 'parent', 'no_check', 'comment', 'all_speciality'],'safe']
+            [['semester_for_editor','course_get','num_dem','subgroup', 'parent', 'no_check', 'comment', 'all_speciality', 'd1l1'],'safe']
         ];
     }
 
@@ -90,7 +99,15 @@ class Lessons extends \yii\db\ActiveRecord
             'lesson_number' => 'Lesson Number',
             'num_dem' => 'По чисельнику і по знаменнику',
             'no_check' => 'Не перевіряти кількість місць',
-            'comment' => 'Коментар'
+            'comment' => 'Коментар',
+            'd1l1' => '1',
+            'd1l2' => '2',
+            'd1l3' => '3',
+            'd1l4' => '4',
+            'd1l5' => '5',
+            'd1l6' => '6',
+            'd1l7' => '7',
+            'd1l8' => '8',
         ];
     }
 

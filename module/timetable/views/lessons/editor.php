@@ -141,6 +141,10 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr,$pare
                 ?>
                 <p class="editor_info">Чисельник</p>
                 <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semester_for_editor'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
+                
+                <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/copy&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semester_for_editor'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_copy_button fa fa-files-o', 'id' => 'modalButtonCopy', 'title' => 'Копіювати']); ?>
+                
+                
                 <a href="<?= Url::toRoute(['delete', 'parent' => $parent, 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php 
             }else{
@@ -150,6 +154,7 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr,$pare
                 ?>
                 <p class="editor_info">Знаменник</p>
                 <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/update&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semester_for_editor'].'&is_numerator=0&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_edit_button fa fa-pencil-square-o', 'id' => 'modalButton', 'title' => 'Редагувати']); ?>
+                <?= Html::button('', ['value'=>Url::to('index.php?r=timetable/lessons/copy&id='.$lesson_id.'&id_okr='.$id_okr.'&id_group='.$id_group.'&id_faculty='.$_GET['faculty_id'].'&id_speciality='.$_GET['speciality_id'].'&course='.$_GET['course_get'].'&semester='.$_GET['semester_for_editor'].'&is_numerator=1&day='.$day.'&lesson_number='.$lesson_number), 'class' => 'editor_copy_button fa fa-files-o', 'id' => 'modalButtonCopy', 'title' => 'Копіювати']); ?>
                 <a href="<?= Url::toRoute(['delete', 'parent' => $parent, 'id' => $lesson_id]); ?>" data-pjax="0" data-method="post" data-confirm="Ви впевнені, що хочете видалити цей запис?" class="editor_delete_button"><i class="fa fa-trash"></i></a>
                 <?php  
             }
@@ -208,7 +213,20 @@ function day_print($day, $lesson_number, $id_group, $is_numerator, $id_okr,$pare
     
     //var_dump($gl);
 ?>
- 
+    
+<?php    
+    Modal::begin([
+      'header' => '<h3>Копіювати інформацію про пару</h3>',
+      'id' => 'modalCopy',
+      'size' => 'modal-lg',
+    ]);
+    
+    echo "<div id='modalContentCopy'></div>";
+    
+    Modal::end();
+    
+    //var_dump($gl);
+?> 
 <div id="editor_page_top"></div>
 <!--Начало таблицы редактора-->   
 <table class="table-striped table-bordered editor_table">
