@@ -88,11 +88,95 @@ class LessonsController extends Controller
                     $m->lesson_number = $model->lesson_number;
                     $m->insert();
             }
+            
 //Код для всего потока            
     if($model->all_speciality){
        
+        $sp = Speciality::findAll(['id_faculty' => $model->id_faculty]);//Узнаем факультет этой группы
+        $gr = Groups::find()->where(['inflow_year' => date("Y") - $model->course])->all();//Выбираем все группы с таким же годом поступления
         
-    }        
+        foreach($gr as $g){
+            foreach($sp as $s){
+                if($s['speciality_id'] == $g['id_speciality']){//Если у группы и специальности совпадают ИД, это то, что нужно
+                    $stream_groups[] = $g['group_id'];
+                }
+            }
+        }
+//Сам код вставки    
+        foreach($stream_groups as $sg){
+            $is_group_for_subgroup = Groups::find()->where(['parent_group' => $sg])->all();
+            $group_speciality = Groups::find()->where(['group_id' => $sg])->select('id_speciality')->all();
+            
+            if(!(empty($is_group_for_subgroup))){
+                continue;
+            }else{
+                
+                    if($sg == $model->id_group){//Если ИД подгруппы совпадает - психуем и забиваем
+                        continue;
+                    }else{//Иначе все по новой
+                        
+                        if($model->num_dem == 1){//Выбрана галочка Числитель/Знаменатель для всей группы
+                               ////
+                            $m = new Lessons;                                                    
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $sg;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $group_speciality[0]['id_speciality'];
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 0;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();
+                            $m = new Lessons;
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $sg;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $group_speciality[0]['id_speciality'];
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert(); 
+                            }else{
+                                $m = new Lessons;
+                                //echo $ga['group_id']."<br/>";
+                                $m->is_holiday = $model->is_holiday;
+                                $m->all_group = $model->all_group;
+                                $m->id_discipline = $model->id_discipline;
+                                $m->id_teacher = $model->id_teacher;
+                                $m->id_classroom = $model->id_classroom;
+                                $m->id_group = $sg;
+                                $m->id_faculty = $model->id_faculty;
+                                $m->id_speciality = $group_speciality[0]['id_speciality'];
+                                $m->course = $model->course;
+                                $m->semester = $model->semester;
+                                $m->id_okr = $model->id_okr;
+                                $m->comment = $model->comment;
+                                $m->is_numerator = $model->is_numerator;
+                                $m->day = $model->day;
+                                $m->lesson_number = $model->lesson_number;
+                                $m->insert();
+                            }
+                    }
+            }        
+        }         
+//Конец кода вставки         
+        
+    }else{//Если не выбрана галка "Для всего потока"        
             
             
 //Конец кода для всего потока
@@ -291,7 +375,7 @@ class LessonsController extends Controller
             }
                 
             }
-            
+    }    
             
             /*
             if($model->all_group == 1){//Если выбрана галка для вссей группы
