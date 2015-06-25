@@ -53,6 +53,12 @@ class LessonsController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
+    public function actionCopy($id)
+    {
+        return $this->renderAjax('copy', [
+                'model' => $model,
+            ]);
+    }        
     /**
      * Creates a new Lessons model.
      * If creation is successful, the browser will be redirected to the 'view' page.
