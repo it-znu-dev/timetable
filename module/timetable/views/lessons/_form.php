@@ -45,7 +45,10 @@ $classes = ClassRooms::find()->Where('seats>'.$sig)->orderBy('classrooms_number 
     if(empty($d)){
         $d = Discipline::findAll(['id_group' => $students_in_group[0]['parent_group']]);
     }
-    
+    if(empty($d)){
+        echo '<div class="alert alert-danger" role="alert">Для даної групи немає дисциплін!</div>';
+        exit();
+    }
     
 foreach ($d as $dd){
     //$disciplines = Discipline::findAll(['discipline_distribution_id' => $dd['id_discipline']]);

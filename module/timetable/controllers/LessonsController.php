@@ -110,12 +110,48 @@ class LessonsController extends Controller
             if(!(empty($is_group_for_subgroup))){
                 continue;
             }else{
-                
-                    if($sg == $model->id_group){//Если ИД подгруппы совпадает - психуем и забиваем
-                        continue;
+                if(($model->num_dem == 1) && (!(empty($is_group_for_subgroup)))){
+                    continue;
+                }else{
+                    if($model->is_numerator == 0){//Если ИД подгруппы совпадает - психуем и забиваем
+                        $m = new Lessons;                                                    
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $sg;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $group_speciality[0]['id_speciality'];
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 1;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();
                     }else{//Иначе все по новой
+                        $m = new Lessons;                                                    
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $sg;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $group_speciality[0]['id_speciality'];
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 0;
+                                    $m->comment = $model->comment;
+                                    $m->day = $model->day;
+                                    $m->lesson_number = $model->lesson_number;
+                                    $m->insert();
                         
-                        if($model->num_dem == 1){//Выбрана галочка Числитель/Знаменатель для всей группы
+                        
+                       /* if($model->num_dem == 1){//Выбрана галочка Числитель/Знаменатель для всей группы
                                ////
                             $m = new Lessons;                                                    
                                     $m->is_holiday = $model->is_holiday;
@@ -169,9 +205,10 @@ class LessonsController extends Controller
                                 $m->is_numerator = $model->is_numerator;
                                 $m->day = $model->day;
                                 $m->lesson_number = $model->lesson_number;
-                                $m->insert();
-                            }
+                                $m->insert();*/ 
+                            //}
                     }
+                }
             }        
         }         
 //Конец кода вставки         

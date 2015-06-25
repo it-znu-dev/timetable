@@ -86,7 +86,7 @@ class Lessons extends \yii\db\ActiveRecord
             'day' => 'Day',
             'is_holiday' => 'ДСР',
             'all_group' => 'Для всієї групи',
-            'all_speciality' => 'Для всієї спеціальності',
+            'all_speciality' => 'Для всього потоку',
             'lesson_number' => 'Lesson Number',
             'num_dem' => 'По чисельнику і по знаменнику',
             'no_check' => 'Не перевіряти кількість місць',
