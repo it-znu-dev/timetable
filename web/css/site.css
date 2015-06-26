@@ -240,3 +240,21 @@ a.desc:after {
     margin-right: -10px;
     margin-left: -12px;        
 }
+.editor_copy_info{
+    float: left;
+    color: #000;
+    background: transparent;
+    border: 0px;
+    font-size: 9px;
+    font-style: italic;
+    margin: 2px 0px 2px 20px;
+}
+.editor_copy_footer{
+    text-align: center;
+}
+.green_text{
+    color: green;
+}
+.red_text{
+    color: red;
+}
