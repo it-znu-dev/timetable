@@ -55,9 +55,12 @@ class LessonsController extends Controller
     }
     public function actionCopy($id)
     {
-        $model = new Lessons();
+        $model = $this->findModel($id);
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            
+            //if($model)
+            
             var_dump($model);
             exit();
             return $this->redirect(['index']);
