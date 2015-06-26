@@ -69,8 +69,8 @@ class Lessons extends \yii\db\ActiveRecord
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'required'],
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'integer'],
             [['semester_for_editor','course_get','num_dem','subgroup', 'parent', 'no_check', 'comment', 'all_speciality', 
-            
-            'd1n', 'd1', 'd2n', 'd2', 'd3n', 'd3', 'd4n', 'd4', 'd5n', 'd5', 'd6n', 'd6'
+                'd1n', 'd1', 'd2n', 'd2', 'd3n', 'd3', 'd4n', 'd4', 'd5n', 'd5', 'd6n', 'd6',
+                'stream1', 'stream2', 'stream3', 'stream4', 'stream5', 'stream6'
    
             ],
                     

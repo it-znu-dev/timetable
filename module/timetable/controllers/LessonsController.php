@@ -59,6 +59,19 @@ class LessonsController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
+            if($model->stream1 == 1){//Если на понедельнике нажата кнопка "Для всей групи"
+                $parent = Groups::findOne(['group_id' => $model->id_group]);
+                $groups_arr = Groups::findAll(['parent_group' => $parent['parent_group']]);
+                var_dump($groups_arr);
+                foreach($model->d1n as $d1n){                
+                    echo "d1n = ".$d1n."<br/>";
+                }
+                foreach($model->d1 as $d1){
+                    echo "d1 = ".$d1."<br/>";
+                }
+            }else{
+                
+            }
             
             
             var_dump($model);
