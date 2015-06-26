@@ -60,9 +60,60 @@ class LessonsController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
             if($model->stream1 == 1){//Если на понедельнике нажата кнопка "Для всей групи"
+                $counter = 1;
                 $parent = Groups::findOne(['group_id' => $model->id_group]);
                 $groups_arr = Groups::findAll(['parent_group' => $parent['parent_group']]);
-                var_dump($groups_arr);
+                    if($model->is_numerator == 1){
+                       foreach($model->d1 as $d1){
+                            echo "d1 = ".$d1."<br/>";
+                            if($d1 == 1){
+                                $m = new Lessons;
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $id_group;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 0;
+                                    $m->day = 1;
+                                    $m->comment = $model->comment;
+                                    $m->lesson_number = $model->lesson_number;
+                                $m->insert();
+                            }
+                       } 
+                    }else{
+                        foreach($model->d1n as $d1n){
+                            echo "d1 = ".$d1."<br/>";
+                            if($d1 == 1){
+                                $m = new Lessons;
+                                    $m->is_holiday = $model->is_holiday;
+                                    $m->all_group = $model->all_group;
+                                    $m->id_discipline = $model->id_discipline;
+                                    $m->id_teacher = $model->id_teacher;
+                                    $m->id_classroom = $model->id_classroom;
+                                    $m->id_group = $id_group;
+                                    $m->id_faculty = $model->id_faculty;
+                                    $m->id_speciality = $model->id_speciality;
+                                    $m->course = $model->course;
+                                    $m->semester = $model->semester;
+                                    $m->id_okr = $model->id_okr;
+                                    $m->is_numerator = 1;
+                                    $m->day = 1;
+                                    $m->comment = $model->comment;
+                                    $m->lesson_number = $model->lesson_number;
+                                $m->insert();
+                            }
+                       }
+                    }
+                    foreach($groups_arr as $gr){
+                        
+                    }
+               // var_dump($groups_arr);
                 foreach($model->d1n as $d1n){                
                     echo "d1n = ".$d1n."<br/>";
                 }
@@ -74,8 +125,8 @@ class LessonsController extends Controller
             }
             
             
-            var_dump($model);
-            exit();
+            //var_dump($model);
+            //exit();
             return $this->redirect(['index']);
         } else {
             return $this->renderAjax('copy', [
