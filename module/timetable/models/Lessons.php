@@ -47,23 +47,9 @@ class Lessons extends \yii\db\ActiveRecord
     
     public $semester_for_editor;
     
-    public $d1l1n, $d1l2n, $d1l3n, $d1l4n, $d1l5n, $d1l6n, $d1l7n, $d1l8n;
-    public $d1l1, $d1l2, $d1l3, $d1l4, $d1l5, $d1l6, $d1l7, $d1l8;
+    public $d1n, $d1, $d2n, $d2, $d3n, $d3, $d4n, $d4, $d5n, $d5, $d6n, $d6;
     
-    public $d2l1n, $d2l2n, $d2l3n, $d2l4n, $d2l5n, $d2l6n, $d2l7n, $d2l8n;
-    public $d2l1, $d2l2, $d2l3, $d2l4, $d2l5, $d2l6, $d2l7, $d2l8;
-    
-    public $d3l1n, $d3l2n, $d3l3n, $d3l4n, $d3l5n, $d3l6n, $d3l7n, $d3l8n;
-    public $d3l1, $d3l2, $d3l3, $d3l4, $d3l5, $d3l6, $d3l7, $d3l8;
-    
-    public $d4l1n, $d4l2n, $d4l3n, $d4l4n, $d4l5n, $d4l6n, $d4l7n, $d4l8n;
-    public $d4l1, $d4l2, $d4l3, $d4l4, $d4l5, $d4l6, $d4l7, $d4l8;
-    
-    public $d5l1n, $d5l2n, $d5l3n, $d5l4n, $d5l5n, $d5l6n, $d5l7n, $d5l8n;
-    public $d5l1, $d5l2, $d5l3, $d5l4, $d5l5, $d5l6, $d5l7, $d5l8;
-    
-    public $d6l1n, $d6l2n, $d6l3n, $d6l4n, $d6l5n, $d6l6n, $d6l7n, $d6l8n;
-    public $d6l1, $d6l2, $d6l3, $d6l4, $d6l5, $d6l6, $d6l7, $d6l8;
+
     
     public $stream1, $stream2, $stream3, $stream4, $stream5, $stream6;
     /**
@@ -84,25 +70,8 @@ class Lessons extends \yii\db\ActiveRecord
             [['id_group', 'id_faculty', 'id_speciality', 'course', 'semester', 'id_okr', 'is_numerator', 'id_discipline', 'id_teacher', 'id_classroom', 'day', 'is_holiday', 'all_group', 'lesson_number'], 'integer'],
             [['semester_for_editor','course_get','num_dem','subgroup', 'parent', 'no_check', 'comment', 'all_speciality', 
             
-            'd1l1n', 'd1l2n', 'd1l3n', 'd1l4n', 'd1l5n', 'd1l6n', 'd1l7n', 'd1l8n',
-            'd1l1', 'd1l2', 'd1l3', 'd1l4', 'd1l5', 'd1l6', 'd1l7', 'd1l8',
-
-            'd2l1n', 'd2l2n', 'd2l3n', 'd2l4n', 'd2l5n', 'd2l6n', 'd2l7n', 'd2l8n',
-            'd2l1', 'd2l2', 'd2l3', 'd2l4', 'd2l5', 'd2l6', 'd2l7', 'd2l8',
-
-            'd3l1n', 'd3l2n', 'd3l3n', 'd3l4n', 'd3l5n', 'd3l6n', 'd3l7n', 'd3l8n',
-            'd3l1', 'd3l2', 'd3l3', 'd3l4', 'd3l5', 'd3l6', 'd3l7', 'd3l8',
-
-            'd4l1n', 'd4l2n', 'd4l3n', 'd4l4n', 'd4l5n', 'd4l6n', 'd4l7n', 'd4l8n',
-            'd4l1', 'd4l2', 'd4l3', 'd4l4', 'd4l5', 'd4l6', 'd4l7', 'd4l8',
-
-            'd5l1n', 'd5l2n', 'd5l3n', 'd5l4n', 'd5l5n', 'd5l6n', 'd5l7n', 'd5l8n',
-            'd5l1', 'd5l2', 'd5l3', 'd5l4', 'd5l5', 'd5l6', 'd5l7', 'd5l8',
-
-            'd6l1n', 'd6l2n', 'd6l3n', 'd6l4n', 'd6l5n', 'd6l6n', 'd6l7n', 'd6l8n',
-            'd6l1', 'd6l2', 'd6l3', 'd6l4', 'd6l5', 'd6l6', 'd6l7', 'd6l8',
-                
-            'stream1', 'stream2', 'stream3', 'stream4', 'stream5', 'stream6'    
+            'd1n', 'd1', 'd2n', 'd2', 'd3n', 'd3', 'd4n', 'd4', 'd5n', 'd5', 'd6n', 'd6'
+   
             ],
                     
             'safe']

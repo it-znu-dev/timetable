@@ -59,7 +59,7 @@ class LessonsController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
-            //if($model)
+            
             
             var_dump($model);
             exit();

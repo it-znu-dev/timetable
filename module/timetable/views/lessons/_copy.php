@@ -53,56 +53,56 @@ use app\module\timetable\models\Lessons;
                         <p class="editor_copy_info">Чисельник</p>
                         <div class="clearfix"></div>                        
                           <div class="col-xs-1">                              
-                              <?= $form->field($model, 'd1l1n')->checkbox(['label' => '1']) ?>
+                              <?= $form->field($model, 'd1n[1]')->checkbox(['label' => '1']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l2n')->checkbox(['label' => '2']) ?>
+                              <?= $form->field($model, 'd1n[2]')->checkbox(['label' => '2']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l3n')->checkbox(['label' => '3']) ?>
+                              <?= $form->field($model, 'd1n[3]')->checkbox(['label' => '3']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l4n')->checkbox(['label' => '4']) ?>
+                              <?= $form->field($model, 'd1n[4]')->checkbox(['label' => '4']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l5n')->checkbox(['label' => '5']) ?>
+                              <?= $form->field($model, 'd1n[5]')->checkbox(['label' => '5']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l6n')->checkbox(['label' => '6']) ?>
+                              <?= $form->field($model, 'd1n[6]')->checkbox(['label' => '6']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l7n')->checkbox(['label' => '7']) ?>
+                              <?= $form->field($model, 'd1n[7]')->checkbox(['label' => '7']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd1l8n')->checkbox(['label' => '8']) ?>
+                              <?= $form->field($model, 'd1n[8]')->checkbox(['label' => '8']) ?>
                           </div>
                     </div>
                   <div class="row">
                       <p class="editor_copy_info">Знаменник</p>
                         <div class="clearfix"></div> 
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l1')->checkbox(['label' => '1']) ?>
+                            <?= $form->field($model, 'd1[1]')->checkbox(['label' => '1']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l2')->checkbox(['label' => '2']) ?>
+                            <?= $form->field($model, 'd1[2]')->checkbox(['label' => '2']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l3')->checkbox(['label' => '3']) ?>
+                            <?= $form->field($model, 'd1[3]')->checkbox(['label' => '3']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l4')->checkbox(['label' => '4']) ?>
+                            <?= $form->field($model, 'd1[4]')->checkbox(['label' => '4']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l5')->checkbox(['label' => '5']) ?>
+                            <?= $form->field($model, 'd1[5]')->checkbox(['label' => '5']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l6')->checkbox(['label' => '6']) ?>
+                            <?= $form->field($model, 'd1[6]')->checkbox(['label' => '6']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l7')->checkbox(['label' => '7']) ?>
+                            <?= $form->field($model, 'd1[7]')->checkbox(['label' => '7']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd1l8')->checkbox(['label' => '8']) ?>
+                            <?= $form->field($model, 'd1[8]')->checkbox(['label' => '8']) ?>
                         </div>
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
@@ -118,56 +118,56 @@ use app\module\timetable\models\Lessons;
                         <p class="editor_copy_info">Чисельник</p>
                         <div class="clearfix"></div> 
                         <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l1n')->checkbox(['label' => '1']) ?>
+                              <?= $form->field($model, 'd4n[1]')->checkbox(['label' => '1']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l2n')->checkbox(['label' => '2']) ?>
+                              <?= $form->field($model, 'd4n[2]')->checkbox(['label' => '2']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l3n')->checkbox(['label' => '3']) ?>
+                              <?= $form->field($model, 'd4n[3]')->checkbox(['label' => '3']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l4n')->checkbox(['label' => '4']) ?>
+                              <?= $form->field($model, 'd4n[4]')->checkbox(['label' => '4']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l5n')->checkbox(['label' => '5']) ?>
+                              <?= $form->field($model, 'd4n[5]')->checkbox(['label' => '5']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l6n')->checkbox(['label' => '6']) ?>
+                              <?= $form->field($model, 'd4n[6]')->checkbox(['label' => '6']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l7n')->checkbox(['label' => '7']) ?>
+                              <?= $form->field($model, 'd4n[7]')->checkbox(['label' => '7']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd4l8n')->checkbox(['label' => '8']) ?>
+                              <?= $form->field($model, 'd4n[8]')->checkbox(['label' => '8']) ?>
                           </div>
                     </div>
                   <div class="row">
                       <p class="editor_copy_info">Знаменник</p>
                         <div class="clearfix"></div> 
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l1')->checkbox(['label' => '1']) ?>
+                            <?= $form->field($model, 'd4[1]')->checkbox(['label' => '1']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l2')->checkbox(['label' => '2']) ?>
+                            <?= $form->field($model, 'd4[2]')->checkbox(['label' => '2']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l3')->checkbox(['label' => '3']) ?>
+                            <?= $form->field($model, 'd4[3]')->checkbox(['label' => '3']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l4')->checkbox(['label' => '4']) ?>
+                            <?= $form->field($model, 'd4[4]')->checkbox(['label' => '4']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l5')->checkbox(['label' => '5']) ?>
+                            <?= $form->field($model, 'd4[5]')->checkbox(['label' => '5']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l6')->checkbox(['label' => '6']) ?>
+                            <?= $form->field($model, 'd4[6]')->checkbox(['label' => '6']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l7')->checkbox(['label' => '7']) ?>
+                            <?= $form->field($model, 'd4[7]')->checkbox(['label' => '7']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd4l8')->checkbox(['label' => '8']) ?>
+                            <?= $form->field($model, 'd4[8]')->checkbox(['label' => '8']) ?>
                         </div>                          
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
@@ -183,56 +183,56 @@ use app\module\timetable\models\Lessons;
                         <p class="editor_copy_info">Чисельник</p>
                         <div class="clearfix"></div>   
                         <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l1n')->checkbox(['label' => '1']) ?>
+                              <?= $form->field($model, 'd2n[1]')->checkbox(['label' => '1']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l2n')->checkbox(['label' => '2']) ?>
+                              <?= $form->field($model, 'd2n[2]')->checkbox(['label' => '2']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l3n')->checkbox(['label' => '3']) ?>
+                              <?= $form->field($model, 'd2n[3]')->checkbox(['label' => '3']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l4n')->checkbox(['label' => '4']) ?>
+                              <?= $form->field($model, 'd2n[4]')->checkbox(['label' => '4']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l5n')->checkbox(['label' => '5']) ?>
+                              <?= $form->field($model, 'd2n[5]')->checkbox(['label' => '5']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l6n')->checkbox(['label' => '6']) ?>
+                              <?= $form->field($model, 'd2n[6]')->checkbox(['label' => '6']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l7n')->checkbox(['label' => '7']) ?>
+                              <?= $form->field($model, 'd2n[7]')->checkbox(['label' => '7']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd2l8n')->checkbox(['label' => '8']) ?>
+                              <?= $form->field($model, 'd2n[8]')->checkbox(['label' => '8']) ?>
                           </div>
                     </div>
                   <div class="row">
                       <p class="editor_copy_info">Знаменник</p>
                         <div class="clearfix"></div> 
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l1')->checkbox(['label' => '1']) ?>
+                            <?= $form->field($model, 'd2[1]')->checkbox(['label' => '1']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l2')->checkbox(['label' => '2']) ?>
+                            <?= $form->field($model, 'd2[2]')->checkbox(['label' => '2']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l3')->checkbox(['label' => '3']) ?>
+                            <?= $form->field($model, 'd2[3]')->checkbox(['label' => '3']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l4')->checkbox(['label' => '4']) ?>
+                            <?= $form->field($model, 'd2[4]')->checkbox(['label' => '4']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l5')->checkbox(['label' => '5']) ?>
+                            <?= $form->field($model, 'd2[5]')->checkbox(['label' => '5']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l6')->checkbox(['label' => '6']) ?>
+                            <?= $form->field($model, 'd2[6]')->checkbox(['label' => '6']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l7')->checkbox(['label' => '7']) ?>
+                            <?= $form->field($model, 'd2[7]')->checkbox(['label' => '7']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd2l8')->checkbox(['label' => '8']) ?>
+                            <?= $form->field($model, 'd2[8]')->checkbox(['label' => '8']) ?>
                         </div>                            
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
@@ -246,56 +246,56 @@ use app\module\timetable\models\Lessons;
                         <p class="editor_copy_info">Чисельник</p>
                         <div class="clearfix"></div> 
                         <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l1n')->checkbox(['label' => '1']) ?>
+                              <?= $form->field($model, 'd5n[1]')->checkbox(['label' => '1']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l2n')->checkbox(['label' => '2']) ?>
+                              <?= $form->field($model, 'd5n[2]')->checkbox(['label' => '2']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l3n')->checkbox(['label' => '3']) ?>
+                              <?= $form->field($model, 'd5n[3]')->checkbox(['label' => '3']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l4n')->checkbox(['label' => '4']) ?>
+                              <?= $form->field($model, 'd5n[4]')->checkbox(['label' => '4']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l5n')->checkbox(['label' => '5']) ?>
+                              <?= $form->field($model, 'd5n[5]')->checkbox(['label' => '5']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l6n')->checkbox(['label' => '6']) ?>
+                              <?= $form->field($model, 'd5n[6]')->checkbox(['label' => '6']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l7n')->checkbox(['label' => '7']) ?>
+                              <?= $form->field($model, 'd5n[7]')->checkbox(['label' => '7']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd5l8n')->checkbox(['label' => '8']) ?>
+                              <?= $form->field($model, 'd5n[8]')->checkbox(['label' => '8']) ?>
                           </div>
                     </div>
                   <div class="row">
                       <p class="editor_copy_info">Знаменник</p>
                         <div class="clearfix"></div> 
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l1')->checkbox(['label' => '1']) ?>
+                            <?= $form->field($model, 'd5[1]')->checkbox(['label' => '1']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l2')->checkbox(['label' => '2']) ?>
+                            <?= $form->field($model, 'd5[2]')->checkbox(['label' => '2']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l3')->checkbox(['label' => '3']) ?>
+                            <?= $form->field($model, 'd5[3]')->checkbox(['label' => '3']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l4')->checkbox(['label' => '4']) ?>
+                            <?= $form->field($model, 'd5[4]')->checkbox(['label' => '4']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l5')->checkbox(['label' => '5']) ?>
+                            <?= $form->field($model, 'd5[5]')->checkbox(['label' => '5']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l6')->checkbox(['label' => '6']) ?>
+                            <?= $form->field($model, 'd5[6]')->checkbox(['label' => '6']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l7')->checkbox(['label' => '7']) ?>
+                            <?= $form->field($model, 'd5[7]')->checkbox(['label' => '7']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd5l8')->checkbox(['label' => '8']) ?>
+                            <?= $form->field($model, 'd5[8]')->checkbox(['label' => '8']) ?>
                         </div>                        
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
@@ -311,56 +311,56 @@ use app\module\timetable\models\Lessons;
                         <p class="editor_copy_info">Чисельник</p>
                         <div class="clearfix"></div>   
                         <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l1n')->checkbox(['label' => '1']) ?>
+                              <?= $form->field($model, 'd3n[1]')->checkbox(['label' => '1']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l2n')->checkbox(['label' => '2']) ?>
+                              <?= $form->field($model, 'd3n[2]')->checkbox(['label' => '2']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l3n')->checkbox(['label' => '3']) ?>
+                              <?= $form->field($model, 'd3n[3]')->checkbox(['label' => '3']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l4n')->checkbox(['label' => '4']) ?>
+                              <?= $form->field($model, 'd3n[4]')->checkbox(['label' => '4']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l5n')->checkbox(['label' => '5']) ?>
+                              <?= $form->field($model, 'd3n[5]')->checkbox(['label' => '5']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l6n')->checkbox(['label' => '6']) ?>
+                              <?= $form->field($model, 'd3n[6]')->checkbox(['label' => '6']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l7n')->checkbox(['label' => '7']) ?>
+                              <?= $form->field($model, 'd3n[7]')->checkbox(['label' => '7']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd3l8n')->checkbox(['label' => '8']) ?>
+                              <?= $form->field($model, 'd3n[8]')->checkbox(['label' => '8']) ?>
                           </div>
                     </div>
                   <div class="row">
                       <p class="editor_copy_info">Знаменник</p>
                         <div class="clearfix"></div> 
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l1')->checkbox(['label' => '1']) ?>
+                            <?= $form->field($model, 'd3[1]')->checkbox(['label' => '1']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l2')->checkbox(['label' => '2']) ?>
+                            <?= $form->field($model, 'd3[2]')->checkbox(['label' => '2']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l3')->checkbox(['label' => '3']) ?>
+                            <?= $form->field($model, 'd3[3]')->checkbox(['label' => '3']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l4')->checkbox(['label' => '4']) ?>
+                            <?= $form->field($model, 'd3[4]')->checkbox(['label' => '4']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l5')->checkbox(['label' => '5']) ?>
+                            <?= $form->field($model, 'd3[5]')->checkbox(['label' => '5']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l6')->checkbox(['label' => '6']) ?>
+                            <?= $form->field($model, 'd3[6]')->checkbox(['label' => '6']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l7')->checkbox(['label' => '7']) ?>
+                            <?= $form->field($model, 'd3[7]')->checkbox(['label' => '7']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd3l8')->checkbox(['label' => '8']) ?>
+                            <?= $form->field($model, 'd3[8]')->checkbox(['label' => '8']) ?>
                         </div>  
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
@@ -374,56 +374,56 @@ use app\module\timetable\models\Lessons;
                         <p class="editor_copy_info">Чисельник</p>
                         <div class="clearfix"></div>   
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l1n')->checkbox(['label' => '1']) ?>
+                              <?= $form->field($model, 'd6n[1]')->checkbox(['label' => '1']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l2n')->checkbox(['label' => '2']) ?>
+                              <?= $form->field($model, 'd6n[2]')->checkbox(['label' => '2']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l3n')->checkbox(['label' => '3']) ?>
+                              <?= $form->field($model, 'd6n[3]')->checkbox(['label' => '3']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l4n')->checkbox(['label' => '4']) ?>
+                              <?= $form->field($model, 'd6n[4]')->checkbox(['label' => '4']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l5n')->checkbox(['label' => '5']) ?>
+                              <?= $form->field($model, 'd6n[5]')->checkbox(['label' => '5']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l6n')->checkbox(['label' => '6']) ?>
+                              <?= $form->field($model, 'd6n[6]')->checkbox(['label' => '6']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l7n')->checkbox(['label' => '7']) ?>
+                              <?= $form->field($model, 'd6n[7]')->checkbox(['label' => '7']) ?>
                           </div>
                           <div class="col-xs-1">
-                              <?= $form->field($model, 'd6l8n')->checkbox(['label' => '8']) ?>
+                              <?= $form->field($model, 'd6n[8]')->checkbox(['label' => '8']) ?>
                           </div>
                     </div>
                   <div class="row">
                       <p class="editor_copy_info">Знаменник</p>
                         <div class="clearfix"></div> 
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l1')->checkbox(['label' => '1']) ?>
+                            <?= $form->field($model, 'd6[1]')->checkbox(['label' => '1']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l2')->checkbox(['label' => '2']) ?>
+                            <?= $form->field($model, 'd6[2]')->checkbox(['label' => '2']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l3')->checkbox(['label' => '3']) ?>
+                            <?= $form->field($model, 'd6[3]')->checkbox(['label' => '3']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l4')->checkbox(['label' => '4']) ?>
+                            <?= $form->field($model, 'd6[4]')->checkbox(['label' => '4']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l5')->checkbox(['label' => '5']) ?>
+                            <?= $form->field($model, 'd6[5]')->checkbox(['label' => '5']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l6')->checkbox(['label' => '6']) ?>
+                            <?= $form->field($model, 'd6[6]')->checkbox(['label' => '6']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l7')->checkbox(['label' => '7']) ?>
+                            <?= $form->field($model, 'd6[7]')->checkbox(['label' => '7']) ?>
                         </div>
                         <div class="col-md-1">
-                            <?= $form->field($model, 'd6l8')->checkbox(['label' => '8']) ?>
+                            <?= $form->field($model, 'd6[8]')->checkbox(['label' => '8']) ?>
                         </div>
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
