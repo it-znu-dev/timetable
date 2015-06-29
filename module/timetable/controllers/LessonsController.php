@@ -59,75 +59,681 @@ class LessonsController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             
-            if($model->stream1 == 1){//Если на понедельнике нажата кнопка "Для всей групи"
-                $counter = 1;
-                $parent = Groups::findOne(['group_id' => $model->id_group]);
-                $groups_arr = Groups::findAll(['parent_group' => $parent['parent_group']]);
-                    if($model->is_numerator == 1){
-                       foreach($model->d1 as $d1){
-                            echo "d1 = ".$d1."<br/>";
-                            if($d1 == 1){
-                                $m = new Lessons;
-                                    $m->is_holiday = $model->is_holiday;
-                                    $m->all_group = $model->all_group;
-                                    $m->id_discipline = $model->id_discipline;
-                                    $m->id_teacher = $model->id_teacher;
-                                    $m->id_classroom = $model->id_classroom;
-                                    $m->id_group = $id_group;
-                                    $m->id_faculty = $model->id_faculty;
-                                    $m->id_speciality = $model->id_speciality;
-                                    $m->course = $model->course;
-                                    $m->semester = $model->semester;
-                                    $m->id_okr = $model->id_okr;
-                                    $m->is_numerator = 0;
-                                    $m->day = 1;
-                                    $m->comment = $model->comment;
-                                    $m->lesson_number = $model->lesson_number;
-                                $m->insert();
-                            }
-                       } 
-                    }else{
-                        foreach($model->d1n as $d1n){
-                            echo "d1 = ".$d1."<br/>";
-                            if($d1 == 1){
-                                $m = new Lessons;
-                                    $m->is_holiday = $model->is_holiday;
-                                    $m->all_group = $model->all_group;
-                                    $m->id_discipline = $model->id_discipline;
-                                    $m->id_teacher = $model->id_teacher;
-                                    $m->id_classroom = $model->id_classroom;
-                                    $m->id_group = $id_group;
-                                    $m->id_faculty = $model->id_faculty;
-                                    $m->id_speciality = $model->id_speciality;
-                                    $m->course = $model->course;
-                                    $m->semester = $model->semester;
-                                    $m->id_okr = $model->id_okr;
-                                    $m->is_numerator = 1;
-                                    $m->day = 1;
-                                    $m->comment = $model->comment;
-                                    $m->lesson_number = $model->lesson_number;
-                                $m->insert();
-                            }
-                       }
-                    }
-                    foreach($groups_arr as $gr){
-                        
-                    }
-               // var_dump($groups_arr);
-                foreach($model->d1n as $d1n){                
-                    echo "d1n = ".$d1n."<br/>";
-                }
-                foreach($model->d1 as $d1){
-                    echo "d1 = ".$d1."<br/>";
-                }
-            }else{
+            
                 
+            $parent = Groups::findAll(['parent_group' => $model->parent]);
+            $group_has_subgroup = false;
+                if($model->parent != 0){
+                    $group_has_subgroup = true;
+                }else{
+                    $group_has_subgroup = false;
+                    $group_id = $model->id_group;
+                }
+/**
+ * Понедельник
+ */
+if($model->stream1 == 1){//Если на понедельнике нажата кнопка "Для всей групи"
+  
+    if($group_has_subgroup == false){
+        breack;
+    }
+    foreach($parent as $p){
+        
+       for($counter_d1 = 1; $counter_d1 < 9; $counter_d1++){
+        if($model->d1[$counter_d1] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 1;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d1;
+            $m->insert();
+        }
+    }
+    for($counter_d1n = 1; $counter_d1n < 9; $counter_d1n++){
+        if($model->d1n[$counter_d1n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 1;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d1n;
+            $m->insert();
+        }
+    } 
+        
+    }
+    
+}else{
+    
+    for($counter_d1 = 1; $counter_d1 < 9; $counter_d1++){
+        if($model->d1[$counter_d1] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 1;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d1;
+            $m->insert();
+        }
+    }
+    for($counter_d1n = 1; $counter_d1n < 9; $counter_d1n++){
+        if($model->d1n[$counter_d1n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 1;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d1n;
+            $m->insert();
+        }
+    }
+}
+                
+                
+/**
+ * Конец функций обработчика понедельника
+ */
+
+/**
+ * Вторник
+ */
+if($model->stream2 == 1){//Если на вторнике нажата кнопка "Для всей групи"
+      
+    foreach($parent as $p){
+        
+       for($counter_d2 = 1; $counter_d2 < 9; $counter_d2++){
+        if($model->d2[$counter_d2] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 2;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d2;
+            $m->insert();
+        }
+    }
+    for($counter_d2n = 1; $counter_d2n < 9; $counter_d2n++){
+        if($model->d2n[$counter_d2n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 2;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d2n;
+            $m->insert();
+        }
+    } 
+        
+    }
+    
+}else{
+    
+    for($counter_d2 = 1; $counter_d2 < 9; $counter_d2++){
+        if($model->d2[$counter_d2] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 2;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d2;
+            $m->insert();
+        }
+    }
+    for($counter_d2n = 1; $counter_d2n < 9; $counter_d2n++){
+        if($model->d2n[$counter_d2n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 2;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d2n;
+            $m->insert();
+        }
+    }
+}                
+/**
+ * Конец функций обработчика вторника
+ */
+
+/**
+ * Среда
+ */
+if($model->stream3 == 1){//Если на среде нажата кнопка "Для всей групи"
+      
+    foreach($parent as $p){//Проходим по всем группам
+        
+       for($counter_d3 = 1; $counter_d3 < 9; $counter_d3++){//Смотрим, что нам прислали для знаменателя
+        if($model->d3[$counter_d3] == 0){
+            continue;
+        }else{//Если стоял флажок =) записываем 
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 3;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d3;
+            $m->insert();
+        }
+    }
+    for($counter_d3n = 1; $counter_d3n < 9; $counter_d3n++){//Смотрим, что нам прислали для числителя
+        if($model->d3n[$counter_d3n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 3;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d3n;
+            $m->insert();
+        }
+    } 
+        
+    }
+    
+}else{//Нужна только 1 группа
+    
+    for($counter_d3 = 1; $counter_d3 < 9; $counter_d3++){//Смотрим, что нам прислали для знаменателя
+        if($model->d3[$counter_d3] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 3;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d3;
+            $m->insert();
+        }
+    }
+    for($counter_d3n = 1; $counter_d3n < 9; $counter_d3n++){//Смотрим, что нам прислали для числителя
+        if($model->d3n[$counter_d3n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 3;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d3n;
+            $m->insert();
+        }
+    }
+}                
+/**
+ * Конец функций обработчика среды
+ */
+
+/**
+ * Четверг
+ */
+if($model->stream4 == 1){//Если на четверге нажата кнопка "Для всей групи"
+      
+    foreach($parent as $p){//Проходим по всем группам
+        
+       for($counter_d4 = 1; $counter_d4 < 9; $counter_d4++){//Смотрим, что нам прислали для знаменателя
+        if($model->d4[$counter_d4] == 0){
+            continue;
+        }else{//Если стоял флажок =) записываем 
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 4;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d4;
+            $m->insert();
+        }
+    }
+    for($counter_d4n = 1; $counter_d4n < 9; $counter_d4n++){//Смотрим, что нам прислали для числителя
+        if($model->d4n[$counter_d4n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 4;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d4n;
+            $m->insert();
+        }
+    } 
+        
+    }
+    
+}else{//Нужна только 1 группа
+    
+    for($counter_d4 = 1; $counter_d4 < 9; $counter_d4++){//Смотрим, что нам прислали для знаменателя
+        if($model->d4[$counter_d4] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 4;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d4;
+            $m->insert();
+        }
+    }
+    for($counter_d4n = 1; $counter_d4n < 9; $counter_d4n++){//Смотрим, что нам прислали для числителя
+        if($model->d4n[$counter_d4n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 4;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d4n;
+            $m->insert();
+        }
+    }
+}                
+/**
+ * Конец функций обработчика четверга
+ */
+
+/**
+ * Пятница
+ */
+if($model->stream5 == 1){//Если на пятнице нажата кнопка "Для всей групи"
+      
+    foreach($parent as $p){//Проходим по всем группам
+        
+       for($counter_d5 = 1; $counter_d5 < 9; $counter_d5++){//Смотрим, что нам прислали для знаменателя
+        if($model->d5[$counter_d5] == 0){
+            continue;
+        }else{//Если стоял флажок =) записываем 
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 5;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d5;
+            $m->insert();
+        }
+    }
+    for($counter_d5n = 1; $counter_d5n < 9; $counter_d5n++){//Смотрим, что нам прислали для числителя
+        if($model->d5n[$counter_d5n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 5;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d5n;
+            $m->insert();
+        }
+    } 
+        
+    }
+    
+}else{//Нужна только 1 группа
+    
+    for($counter_d5 = 1; $counter_d5 < 9; $counter_d5++){//Смотрим, что нам прислали для знаменателя
+        if($model->d5[$counter_d5] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 5;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d5;
+            $m->insert();
+        }
+    }
+    for($counter_d5n = 1; $counter_d5n < 9; $counter_d5n++){//Смотрим, что нам прислали для числителя
+        if($model->d5n[$counter_d5n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 5;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d5n;
+            $m->insert();
+        }
+    }
+}                
+/**
+ * Конец функций обработчика пятницы
+ */
+
+/**
+ * Суббота
+ */
+if($model->stream6 == 1){//Если на субботе нажата кнопка "Для всей групи"
+      
+    foreach($parent as $p){//Проходим по всем группам
+        
+       for($counter_d6 = 1; $counter_d6 < 9; $counter_d6++){//Смотрим, что нам прислали для знаменателя
+        if($model->d6[$counter_d6] == 0){
+            continue;
+        }else{//Если стоял флажок =) записываем 
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 6;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d6;
+            $m->insert();
+        }
+    }
+    for($counter_d6n = 1; $counter_d6n < 9; $counter_d6n++){//Смотрим, что нам прислали для числителя
+        if($model->d6n[$counter_d6n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $p['group_id'];
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 6;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d6n;
+            $m->insert();
+        }
+    } 
+        
+    }
+    
+}else{//Нужна только 1 группа
+    
+    for($counter_d6 = 1; $counter_d6 < 9; $counter_d6++){//Смотрим, что нам прислали для знаменателя
+        if($model->d6[$counter_d6] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 0;
+                $m->day = 6;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d6;
+            $m->insert();
+        }
+    }
+    for($counter_d6n = 1; $counter_d6n < 9; $counter_d6n++){//Смотрим, что нам прислали для числителя
+        if($model->d6n[$counter_d6n] == 0){
+            continue;
+        }else{
+            $m = new Lessons;
+                $m->is_holiday = $model->is_holiday;
+                $m->all_group = $model->all_group;
+                $m->id_discipline = $model->id_discipline;
+                $m->id_teacher = $model->id_teacher;
+                $m->id_classroom = $model->id_classroom;
+                $m->id_group = $model->id_group;
+                $m->id_faculty = $model->id_faculty;
+                $m->id_speciality = $model->id_speciality;
+                $m->course = $model->course;
+                $m->semester = $model->semester;
+                $m->id_okr = $model->id_okr;
+                $m->is_numerator = 1;
+                $m->day = 6;
+                $m->comment = $model->comment;
+                $m->lesson_number = $counter_d6n;
+            $m->insert();
+        }
+    }
+}                
+/**
+ * Конец функций обработчика субботы
+ */
+
+            if($group_has_subgroup == true){
+                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->parent.'#lesson_id'.$model->lesson_id);    
+            }else{
+                $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->id_group.'#lesson_id'.$model->lesson_id);    
             }
-            
-            
-            //var_dump($model);
-            //exit();
-            return $this->redirect(['index']);
+            return $this->redirect($url);
         } else {
             return $this->renderAjax('copy', [
                 'model' => $this->findModel($id),

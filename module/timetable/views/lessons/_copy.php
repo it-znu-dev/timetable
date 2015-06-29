@@ -39,12 +39,15 @@ use app\module\timetable\models\Lessons;
 /* @var $this yii\web\View */
 /* @var $model app\module\timetable\models\Lessons */
 /* @var $form yii\widgets\ActiveForm */
-
+$id_group = $_GET['id_group'];
+$group_info = Groups::find()->where(['group_id' => $id_group ])->all();
 ?>
 
 <div class="copy-form">
     <div class="col-md-12">
         <?php $form = ActiveForm::begin(); ?>
+        
+        <?= $form->field($model, 'parent')->hiddenInput(['value' => $group_info[0]['parent_group']])->label(false) ?>
         
         <div class="col-md-4">
             <div class="row well margin_for_editor_copy"> 
@@ -106,7 +109,17 @@ use app\module\timetable\models\Lessons;
                         </div>
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
-                            <?= $form->field($model, 'stream1')->checkbox(['label' => 'Для усієї групи']) ?>                            
+                            <?php
+                                if($group_info[0]['parent_group'] != 0){
+                            ?> 
+                                <?= $form->field($model, 'stream1')->checkbox(['label' => 'Для усієї групи']) ?>   
+                            <?php
+                                }else{
+                            ?>        
+                                <?= $form->field($model, 'stream1')->checkbox(['checked' => false, 'disabled'=>true, 'label' => 'Для усієї групи']) ?>
+                            <?php
+                                }
+                            ?>
                         </div>
                   </div>
                 
@@ -171,7 +184,17 @@ use app\module\timetable\models\Lessons;
                         </div>                          
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
-                            <?= $form->field($model, 'stream4')->checkbox(['label' => 'Для усієї групи']) ?>                            
+                             <?php
+                                if($group_info[0]['parent_group'] != 0){
+                            ?> 
+                                <?= $form->field($model, 'stream4')->checkbox(['label' => 'Для усієї групи']) ?>   
+                            <?php
+                                }else{
+                            ?>        
+                                <?= $form->field($model, 'stream4')->checkbox(['checked' => false, 'disabled'=>true, 'label' => 'Для усієї групи']) ?>
+                            <?php
+                                }
+                            ?>                            
                         </div>
                   </div>
             </div>
@@ -236,7 +259,17 @@ use app\module\timetable\models\Lessons;
                         </div>                            
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
-                            <?= $form->field($model, 'stream2')->checkbox(['label' => 'Для усієї групи']) ?>                            
+                             <?php
+                                if($group_info[0]['parent_group'] != 0){
+                            ?> 
+                                <?= $form->field($model, 'stream2')->checkbox(['label' => 'Для усієї групи']) ?>   
+                            <?php
+                                }else{
+                            ?>        
+                                <?= $form->field($model, 'stream2')->checkbox(['checked' => false, 'disabled'=>true, 'label' => 'Для усієї групи']) ?>
+                            <?php
+                                }
+                            ?>                           
                         </div>
                   </div>
             </div>
@@ -299,7 +332,17 @@ use app\module\timetable\models\Lessons;
                         </div>                        
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
-                            <?= $form->field($model, 'stream5')->checkbox(['label' => 'Для усієї групи']) ?>                            
+                             <?php
+                                if($group_info[0]['parent_group'] != 0){
+                            ?> 
+                                <?= $form->field($model, 'stream5')->checkbox(['label' => 'Для усієї групи']) ?>   
+                            <?php
+                                }else{
+                            ?>        
+                                <?= $form->field($model, 'stream5')->checkbox(['checked' => false, 'disabled'=>true, 'label' => 'Для усієї групи']) ?>
+                            <?php
+                                }
+                            ?>                            
                         </div>
                   </div>
             </div>
@@ -364,7 +407,17 @@ use app\module\timetable\models\Lessons;
                         </div>  
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
-                            <?= $form->field($model, 'stream3')->checkbox(['label' => 'Для усієї групи']) ?>                            
+                             <?php
+                                if($group_info[0]['parent_group'] != 0){
+                            ?> 
+                                <?= $form->field($model, 'stream3')->checkbox(['label' => 'Для усієї групи']) ?>   
+                            <?php
+                                }else{
+                            ?>        
+                                <?= $form->field($model, 'stream3')->checkbox(['checked' => false, 'disabled'=>true, 'label' => 'Для усієї групи']) ?>
+                            <?php
+                                }
+                            ?>                            
                         </div>
                   </div>
             </div>
@@ -427,7 +480,17 @@ use app\module\timetable\models\Lessons;
                         </div>
                         <div class="clearfix"></div>
                         <div class="editor_copy_footer">
-                            <?= $form->field($model, 'stream6')->checkbox(['label' => 'Для усієї групи']) ?>                            
+                             <?php
+                                if($group_info[0]['parent_group'] != 0){
+                            ?> 
+                                <?= $form->field($model, 'stream6')->checkbox(['label' => 'Для усієї групи']) ?>   
+                            <?php
+                                }else{
+                            ?>        
+                                <?= $form->field($model, 'stream6')->checkbox(['checked' => false, 'disabled'=>true, 'label' => 'Для усієї групи']) ?>
+                            <?php
+                                }
+                            ?>                            
                         </div>
                   </div>
             </div>
