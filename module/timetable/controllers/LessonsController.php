@@ -12,6 +12,8 @@ use app\module\handbook\models\Speciality;
 use app\module\handbook\models\Groups;
 use app\module\handbook\models\ClassRooms;
 use app\module\handbook\models\Housing;
+use app\module\handbook\models\Teachers;
+use app\module\handbook\models\Discipline;
 /**
  * LessonsController implements the CRUD actions for Lessons model.
  */
@@ -1200,6 +1202,33 @@ foreach($stream_groups as $sg){
         }
  
     }
+    
+    public function actionTeacher_by_cathedra($id)
+    {   
+        
+        $cathedra_id = Discipline::findOne(['discipline_distribution_id' => $id]);
+        
+        $countPosts = Teachers::find() 
+                ->where(['id_cathedra' =>  $cathedra_id['id_cathedra']])
+                ->count();
+        
+        $posts = Teachers::find() 
+                ->where(['id_cathedra' =>  $cathedra_id['id_cathedra']])
+                ->orderBy('teacher_name ASC')
+                ->all();
+        
+        
+        if($countPosts>0){
+            echo "<option>Оберіть викладача</option>";
+            foreach($posts as $post){
+                echo "<option value='".$post->teacher_id."'>".$post->teacher_name."</option>";
+            }
+        }
+        else{
+            echo "<option>-</option>";
+        }
+ 
+    }
     /**
      * Updates an existing Lessons model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -1218,12 +1247,6 @@ foreach($stream_groups as $sg){
                 $model->is_holiday = 1;
         }*/
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            
-$group_info = Groups::findOne(["group_id" => $model->id_group]);
-
-$les_id = Lessons::findOne(['id_group' => $group_info['group_id'], 'semester' => $model->semester, 'day' => $model->day, 'lesson_number' => $model->lesson_number]);
-        var_dump($model);
-        exit();
         
             if($model->subgroup == 1){
                 $url = Url::to('index.php?r=timetable/lessons/editor&id'.$model->lesson_id.'&semester_for_editor='.$model->semester.'&course_get='.$model->course.'&faculty_id='.$model->id_faculty.'&speciality_id='.$model->id_speciality.'&group_id='.$model->parent.'#lesson_id'.$model->lesson_id);    

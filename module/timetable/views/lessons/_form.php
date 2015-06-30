@@ -104,6 +104,14 @@ foreach($da as $x=>$x_value){
             'pluginOptions' => [
                 'allowClear' => true
             ],
+            'options' => [
+                'onchange'=>'
+                $.post("index.php?r=timetable/lessons/teacher_by_cathedra&id='.'"+$(this).val(), function( data ) {
+                  $( "select#lessons-id_teacher" ).html( data );
+                });
+            '
+            ],
+            
         ])->label('Дисципліна');
     ?>
     
