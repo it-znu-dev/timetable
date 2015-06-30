@@ -258,3 +258,6 @@ a.desc:after {
 .red_text{
     color: red;
 }
+.editor_copy_button:hover{
+    color: #23527C;
+}
