@@ -65,6 +65,17 @@ class ClassroomsBusySearch extends ClassroomsBusy
         ]);
         $query->andFilterWhere(['like', 'lesson_time_name', $this->lesson])
               ->andFilterWhere(['like', 'classrooms_number', $this->id_classroom]);
+        
+        /* Так надо парсить дату
+         $fechaEmision = explode("A", $this->FechaEmision);
+
+$fechaEmisionInicio = \DateTime::createFromFormat('d/m/Y', trim($fechaEmision[0]))->format('Y-m-d');
+
+$fechaEmisionFin = \DateTime::createFromFormat('d/m/Y', trim($fechaEmision[1]))->format('Y-m-d');
+
+$query->andFilterWhere(['between', 'FechaEmision', $fechaEmisionInicio, $fechaEmisionFin]);
+*/
+        //$query->andFilterWhere(['between', 'day', '2015/05/03', '2015/05/29']);
         return $dataProvider;
     }
 }

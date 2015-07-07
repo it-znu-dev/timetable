@@ -24,5 +24,13 @@ $(document).ready(function(){
           $("#editor_navigation_close_button").html('<div class="editor_navigation_bottom editor_navigation_close"><i class="fa fa-times"></i><br/>Сховати</div>');
         }
    });
+   
+   function aplicarDateRangeFilter() {
+
+    $('.grid-view').yiiGridView('applyFilter');
+
+    }
+   
+   
 });
 

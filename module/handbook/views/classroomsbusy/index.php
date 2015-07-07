@@ -16,6 +16,7 @@ use yii\grid\GridView;
 use app\module\handbook\models\Housing;
 use app\module\handbook\models\ClassRooms;
 use dosamigos\datepicker\DatePicker;
+use kartik\daterange\DateRangePicker;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\module\handbook\models\ClassroomsBusySearch */
@@ -70,7 +71,25 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]
             ])
             ],
-            
+               /*     [
+               'attribute' => 'day',
+               'value' => 'day',
+               'filter' => '<div class="input-group drp-container">'.
+                    DateRangePicker::widget([
+                    'name'=>'day',
+                    'value'=>'01-Jan-14 to 20-Feb-14',
+                    'language' => 'ru',    
+                    'convertFormat'=>true,
+                    'useWithAddon'=>true,
+                    'pluginOptions'=>[
+                        'format'=>'D-M-Y',
+                        'separator'=>' to ',
+                        'opens'=>'left',
+                        
+                    ]
+                ]).'</div>'
+                        ],*/
+                    
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
